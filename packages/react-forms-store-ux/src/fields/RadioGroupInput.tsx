@@ -1,0 +1,49 @@
+import React from 'react';
+
+import {ChoiceField, OptionBase, useField} from 'react-forms-store';
+
+import {
+    FormControl,
+    FormControlLabel,
+    FormHelperText,
+    Radio,
+    RadioGroup,
+} from '@mui/material';
+
+type RadioGroupInputProps<T extends OptionBase> = {
+    field: ChoiceField<T>;
+};
+
+const RadioGroupInput = <T extends OptionBase>({
+    field,
+}: RadioGroupInputProps<T>) => {
+    const {value, errors, hasErrors} = useField(field);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedValue = event.target.value;
+
+        const item = field.choices.find(
+            choice => String(choice.id) === String(selectedValue)
+        );
+
+        field.setValue(item!);
+    };
+
+    return (
+        <FormControl fullWidth component="fieldset" error={hasErrors}>
+            <RadioGroup value={value?.id} onChange={handleChange}>
+                {field.choices.map(choice => (
+                    <FormControlLabel
+                        key={choice.id}
+                        value={choice.id}
+                        control={<Radio />}
+                        label={choice.label}
+                    />
+                ))}
+            </RadioGroup>
+            {hasErrors && <FormHelperText>{errors.join(', ')}</FormHelperText>}
+        </FormControl>
+    );
+};
+
+export default RadioGroupInput;

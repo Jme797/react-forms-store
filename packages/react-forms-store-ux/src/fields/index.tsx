@@ -6,3 +6,5 @@ export {default as NumberInput} from './NumberInput';
 export {default as SliderInput} from './SliderInput';
 export {default as SelectInput} from './SelectInput';
 export {default as MultipleSelectInput} from './MultipleSelectInput';
+export {default as RadioGroupInput} from './RadioGroupInput';
+export {default as CheckboxGroupInput} from './CheckboxGroupInput';
