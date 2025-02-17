@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {useField} from 'react-forms-store';
+import {TextField, useField} from 'react-forms-store';
 
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 import {
@@ -9,7 +9,11 @@ import {
     TextField as MuiTextField,
 } from '@mui/material';
 
-const PasswordInput = ({field}) => {
+type PasswordInputProps = {
+    field: TextField;
+};
+
+const PasswordInput: React.FC<PasswordInputProps> = ({field}) => {
     const [showPassword, setShowPassword] = useState(false);
     const {value, errors, hasErrors} = useField(field);
 

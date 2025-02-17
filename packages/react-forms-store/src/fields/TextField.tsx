@@ -1,10 +1,12 @@
 import {ValidationResult} from '../validation/Validator';
 import {Field, FieldOptions} from './Field';
 
+export type TextFieldOptions = Omit<FieldOptions<string>, 'initValue'> & {
+    initValue?: string;
+};
+
 export class TextField extends Field<string> {
-    constructor(
-        options: Omit<FieldOptions<string>, 'initValue'> & {initValue?: string}
-    ) {
+    constructor(options: TextFieldOptions) {
         super({...options, initValue: options.initValue ?? ''});
     }
 
