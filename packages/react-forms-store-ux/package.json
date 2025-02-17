@@ -25,20 +25,22 @@
     },
     "homepage": "https://github.com/Jme797/react-forms-store-ux#readme",
     "dependencies": {
-        "react-forms-store": "file:../react-forms-store",
+        "@mui/icons-material": "^6.4.3",
+        "@types/use-sync-external-store": "^0.0.4",
+        "react-forms-store": "workspace:*",
         "use-sync-external-store": "^1.4.0"
     },
     "peerDependencies": {
         "@emotion/react": "^11.0.0",
         "@emotion/styled": "^11.0.0",
-        "@mui/material": "^5.0.0",
+        "@mui/material": "^6.1.7",
         "react": "^17.0.0",
         "react-dom": "^17.0.0"
     },
     "devDependencies": {
         "@emotion/react": "^11.0.0",
         "@emotion/styled": "^11.0.0",
-        "@mui/material": "^5.0.0",
+        "@mui/material": "^6.1.7",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
         "esbuild": "^0.14.0",

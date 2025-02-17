@@ -15,7 +15,8 @@ export default {
     importOrder: [
         '<UNKNOWN>',
         '^react$',
-        '^react',
+        '^react-forms-store$',
+        '^react-forms-store-ux$',
         '^@mui'
     ],
 };

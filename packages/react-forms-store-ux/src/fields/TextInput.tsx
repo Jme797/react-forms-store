@@ -12,6 +12,7 @@ type TextInputProps = {
 
 const TextInput: React.FC<TextInputProps> = ({field}) => {
     const value = useSyncExternalStore(field.subscribe, () => field.value);
+    const errors = useSyncExternalStore(field.subscribe, () => field.errors);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         field.setValue(event.target.value);
@@ -22,8 +23,12 @@ const TextInput: React.FC<TextInputProps> = ({field}) => {
             label={field.label}
             value={value}
             onChange={handleChange}
-            // error={!errors.success}
-            // helperText={!errors.success ? errors.errors.map(error => error.message).join(', ') : helperText}
+            error={!errors.success}
+            helperText={
+                !errors.success
+                    ? errors.errors?.map(error => error.msg).join(', ')
+                    : field.helpText
+            }
             fullWidth
         />
     );

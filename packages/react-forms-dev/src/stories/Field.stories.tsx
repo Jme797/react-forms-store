@@ -1,6 +1,8 @@
 import {Meta, StoryFn} from '@storybook/react';
 
-import HelloWorld from 'react-forms-store-ux';
+const HelloWorld = () => {
+    return <h1>Hello, World!</h1>;
+};
 
 export default {
     title: 'Example/HelloWorld',
