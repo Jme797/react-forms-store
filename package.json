@@ -11,7 +11,14 @@
     "hoistingLimits": "workspaces"
   },
   "scripts": {
-    "storybook": "yarn workspace react-forms-dev storybook"
+    "storybook": "yarn workspace react-forms-dev storybook",
+    "format": "yarn prettier --write packages | grep -v unchanged"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.6.0",
+  "dependencies": {
+    "merge-prettier-plugins": "^1.0.3",
+    "prettier": "^3.5.1",
+    "prettier-plugin-import-sorting": "^1.1.23",
+    "prettier-remove-unused-imports": "^1.1.21"
+  }
 }

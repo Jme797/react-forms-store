@@ -38,14 +38,18 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      * @returns {boolean} True if any field is dirty, false otherwise.
      */
     isDirty = (): boolean => {
-        return !Object.values(this.fields).every((field: Field<any, Form<any>>) => !field.dirty);
+        return !Object.values(this.fields).every(
+            (field: Field<any, Form<any>>) => !field.dirty
+        );
     };
 
     /**
      * Saves the current state of all fields.
      */
     saveState = () => {
-        Object.values(this.fields).forEach((field: Field<any, Form<any>>) => field.saveValue());
+        Object.values(this.fields).forEach((field: Field<any, Form<any>>) =>
+            field.saveValue()
+        );
     };
 
     /**
@@ -100,7 +104,9 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      * Resets all fields in the form to their initial values.
      */
     reset = () => {
-        Object.values(this.fields).forEach((field: Field<any, Form<any>>) => field.reset());
+        Object.values(this.fields).forEach((field: Field<any, Form<any>>) =>
+            field.reset()
+        );
     };
 
     /**
@@ -108,7 +114,11 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      * @param {(data: {[Key in keyof State]: State[Key]['value']}) => Promise<void>} handleSubmit - The function to handle form submission.
      * @returns {Promise<void | false>} A promise that resolves when the form is submitted or false if the form is invalid.
      */
-    submit = async (handleSubmit: (data: {[Key in keyof State]: State[Key]['value']}) => Promise<void>) => {
+    submit = async (
+        handleSubmit: (data: {
+            [Key in keyof State]: State[Key]['value'];
+        }) => Promise<void>
+    ) => {
         this.submitting = true;
         this.triggerSubscribers();
         if (await this.formValid()) {
@@ -127,7 +137,13 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      * Raises errors for the form and its fields.
      * @param {{fieldErrors?: {[Key in keyof State]: string[]}; formErrors?: string[]}} param0 - An object containing field and form errors.
      */
-    raiseErrors = ({fieldErrors, formErrors = []}: {fieldErrors?: {[Key in keyof State]: string[]}; formErrors?: string[]}) => {
+    raiseErrors = ({
+        fieldErrors,
+        formErrors = [],
+    }: {
+        fieldErrors?: {[Key in keyof State]: string[]};
+        formErrors?: string[];
+    }) => {
         this.formErrors = formErrors;
 
         if (fieldErrors) {

@@ -16,7 +16,15 @@ export class ValidationResult {
     success: boolean;
     field?: Field;
 
-    constructor({success, errors, field}: {success: boolean; errors?: Array<ValidatorError>; field?: Field<unknown>}) {
+    constructor({
+        success,
+        errors,
+        field,
+    }: {
+        success: boolean;
+        errors?: Array<ValidatorError>;
+        field?: Field<unknown>;
+    }) {
         this.success = success;
         this.errors = errors;
         this.field = field;

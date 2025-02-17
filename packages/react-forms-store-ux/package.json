@@ -1,45 +1,51 @@
 {
-  "name": "react-forms-store-ux",
-  "version": "1.0.0",
-  "description": "A UX package for React forms",
-  "main": "src/index.tsx",
-  "scripts": {
-    "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
-    "build": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Jme797/react-forms-store-ux.git"
-  },
-  "keywords": [
-    "react",
-    "forms",
-    "ux",
-    "material-ui"
-  ],
-  "author": "Jme797",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Jme797/react-forms-store-ux/issues"
-  },
-  "homepage": "https://github.com/Jme797/react-forms-store-ux#readme",
-  "dependencies": {
-    "@mui/material": "^5.0.0",
-    "react-forms-store": "file:../react-forms-store"
-  },
-  "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
-  },
-  "devDependencies": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "esbuild": "^0.14.0",
-    "jest": "^27.0.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "typescript": "^4.0.0"
-  },
-  "packageManager": "yarn@4.5.1"
+    "name": "react-forms-store-ux",
+    "version": "1.0.0",
+    "description": "A UX package for React forms",
+    "main": "src/index.tsx",
+    "scripts": {
+        "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
+        "build": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Jme797/react-forms-store-ux.git"
+    },
+    "keywords": [
+        "react",
+        "forms",
+        "ux",
+        "material-ui"
+    ],
+    "author": "Jme797",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Jme797/react-forms-store-ux/issues"
+    },
+    "homepage": "https://github.com/Jme797/react-forms-store-ux#readme",
+    "dependencies": {
+        "react-forms-store": "file:../react-forms-store",
+        "use-sync-external-store": "^1.4.0"
+    },
+    "peerDependencies": {
+        "@emotion/react": "^11.0.0",
+        "@emotion/styled": "^11.0.0",
+        "@mui/material": "^5.0.0",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0"
+    },
+    "devDependencies": {
+        "@emotion/react": "^11.0.0",
+        "@emotion/styled": "^11.0.0",
+        "@mui/material": "^5.0.0",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "esbuild": "^0.14.0",
+        "jest": "^27.0.0",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0",
+        "typescript": "^4.0.0"
+    },
+    "packageManager": "yarn@4.5.1"
 }

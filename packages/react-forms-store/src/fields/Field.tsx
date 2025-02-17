@@ -1,5 +1,9 @@
 import {Form} from '../forms/Form';
-import {ValidationResult, Validator, ValidatorError} from '../validation/Validator';
+import {
+    ValidationResult,
+    Validator,
+    ValidatorError,
+} from '../validation/Validator';
 import {v4 as uuidv4} from 'uuid';
 
 export type FieldOptions<v> = {
@@ -16,9 +20,9 @@ export type FieldOptions<v> = {
 
 export type Option<v> = {value: v; label: string};
 
-export class Field<v = any, F extends Form = Form> {
-    private _errors: ValidationResult = new ValidationResult({success: true});
-    private _value: v;
+export class Field<v = any, F extends Form<any> = Form<any>> {
+    protected _errors: ValidationResult = new ValidationResult({success: true});
+    protected _value: v;
 
     disabled: boolean;
     dirty: boolean;
@@ -38,7 +42,17 @@ export class Field<v = any, F extends Form = Form> {
 
     form?: F;
 
-    constructor({initValue, label, required = false, validation = [], disabled = false, readonly = false, testId, helpText, defaultValue}: Omit<FieldOptions<v>, 'initValue'> & {initValue: v}) {
+    constructor({
+        initValue,
+        label,
+        required = false,
+        validation = [],
+        disabled = false,
+        readonly = false,
+        testId,
+        helpText,
+        defaultValue,
+    }: Omit<FieldOptions<v>, 'initValue'> & {initValue: v}) {
         this._value = initValue;
         this.label = label;
         this.name = 'id' + uuidv4();
