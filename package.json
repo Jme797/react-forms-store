@@ -1,45 +1,17 @@
 {
-  "name": "react-forms-store",
+  "name": "react-forms-store-monorepo",
   "version": "1.0.0",
-  "description": "A package for building React forms using external storages",
-  "main": "index.js",
-  "scripts": {
-    "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
-    "build": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Jme797/react-forms-store.git"
-  },
-  "keywords": [
-    "react",
-    "forms",
-    "external storage",
-    "hooks"
+  "private": true,
+  "workspaces": [
+    "packages/react-forms-store",
+    "packages/react-forms-store-ux",
+    "packages/react-forms-dev"
   ],
-  "author": "Jme797",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Jme797/react-forms-store/issues"
+  "installConfig": {
+    "hoistingLimits": "workspaces"
   },
-  "homepage": "https://github.com/Jme797/react-forms-store#readme",
-  "dependencies": {
-    "use-sync-external-store": "^1.4.0"
+  "scripts": {
+    "storybook": "yarn workspace react-forms-dev storybook"
   },
-  "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
-  },
-  "devDependencies": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "esbuild": "^0.14.0",
-    "jest": "^27.0.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "typescript": "^4.0.0",
-    "use-sync-external-store": "^1.4.0"
-  },
-  "packageManager": "yarn@4.5.1"
+  "packageManager": "yarn@4.6.0"
 }
