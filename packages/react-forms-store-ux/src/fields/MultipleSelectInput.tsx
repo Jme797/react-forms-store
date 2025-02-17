@@ -18,37 +18,31 @@ const MultipleSelectInput = <T extends OptionBase>({
 }: MultipleSelectInputProps<T>) => {
     const {value, errors, hasErrors} = useField(field);
 
-    const handleChange = (event: SelectChangeEvent<T[]>) => {
+    const handleChange = (event: SelectChangeEvent<T['id'][]>) => {
         const value = event.target.value;
-        const selected = typeof value === 'string' ? value.split(',') : value;
+        const selected = typeof value === 'string' ? undefined : value;
+
         field.setValue(
-            selected.map(
-                id =>
-                    field.choices.find(
-                        choice => String(choice.id) === String(id)
-                    )!
-            )
+            field.choices.filter(choice => selected?.includes(choice.id))
         );
     };
 
-    const renderValue = (selected: unknown) => {
-        return (selected as (string | number)[])
-            .map(id => field.choices.find(choice => choice.id === id)?.id)
-            .join(', ');
+    const renderValue = (selected: T['id'][]) => {
+        return selected.join(', ');
     };
 
     return (
         <FormControl fullWidth error={hasErrors}>
             <InputLabel>{field.label}</InputLabel>
-            <Select<T[]>
+            <Select<T['id'][]>
                 multiple
-                value={value}
+                value={value.map(i => i.id)}
                 onChange={handleChange}
                 renderValue={renderValue}
             >
                 {field.choices.map(choice => (
                     <MenuItem key={choice.id} value={choice.id}>
-                        {choice.id}
+                        {choice.label}
                     </MenuItem>
                 ))}
             </Select>

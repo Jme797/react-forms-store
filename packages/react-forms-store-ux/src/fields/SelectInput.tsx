@@ -9,7 +9,7 @@ import {
     SelectChangeEvent,
 } from '@mui/material';
 
-type SelectInputProps<T> = {
+type SelectInputProps<T extends OptionBase> = {
     field: ChoiceField<T>;
 };
 
@@ -40,7 +40,7 @@ const SelectInput = <T extends OptionBase>({field}: SelectInputProps<T>) => {
             >
                 {field.choices.map(choice => (
                     <MenuItem key={choice.id} value={choice.id}>
-                        {choice.id}
+                        {choice.label}
                     </MenuItem>
                 ))}
             </Select>
