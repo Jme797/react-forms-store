@@ -24,6 +24,9 @@
     "url": "https://github.com/Jme797/react-forms-store/issues"
   },
   "homepage": "https://github.com/Jme797/react-forms-store#readme",
+  "dependencies": {
+    "uuid": "^11.0.5"
+  },
   "peerDependencies": {
     "react": "^17.0.0",
     "react-dom": "^17.0.0",

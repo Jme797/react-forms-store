@@ -2,7 +2,7 @@
   "name": "react-forms-store-ux",
   "version": "1.0.0",
   "description": "A UX package for React forms",
-  "main": "dist/index.js",
+  "main": "src/index.tsx",
   "scripts": {
     "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
     "build": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js",
