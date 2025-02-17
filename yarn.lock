@@ -2036,15 +2036,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^19.0.3":
-  version: 19.0.4
-  resolution: "@types/react-dom@npm:19.0.4"
-  peerDependencies:
-    "@types/react": ^19.0.0
-  checksum: 10c0/4e71853919b94df9e746a4bd73f8180e9ae13016333ce9c543dcba9f4f4c8fe6e28b038ca6ee61c24e291af8e03ca3bc5ded17c46dee938fcb32d71186fda7a3
-  languageName: node
-  linkType: hard
-
 "@types/react-transition-group@npm:^4.4.10":
   version: 4.4.12
   resolution: "@types/react-transition-group@npm:4.4.12"
@@ -2062,15 +2053,6 @@ __metadata:
     "@types/scheduler": "npm:^0.16"
     csstype: "npm:^3.0.2"
   checksum: 10c0/c8f76790190a9df42099f5f78d08dd4095f2da3bd97ff7cce0001d5a97ff3ffb31f703575acf2c457606e0d0b229ca8d1ba0ff459b77a4e44c5ea5154fe3fb4b
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^19.0.8":
-  version: 19.0.10
-  resolution: "@types/react@npm:19.0.10"
-  dependencies:
-    csstype: "npm:^3.0.2"
-  checksum: 10c0/41884cca21850c8b2d6578b172ca0ca4fff6021251a68532b19f2031ac23dc5a9222470208065f8d9985d367376047df2f49ece8d927f7d04cdc94922b1eb34b
   languageName: node
   linkType: hard
 
@@ -6017,7 +5999,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react-dom@npm:^19.0.0":
+"react-dom@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
   version: 19.0.0
   resolution: "react-dom@npm:19.0.0"
   dependencies:
@@ -6054,16 +6036,18 @@ __metadata:
     "@storybook/react": "npm:8.5.6"
     "@storybook/react-vite": "npm:8.5.6"
     "@storybook/test": "npm:8.5.6"
-    "@types/react": "npm:^19.0.8"
-    "@types/react-dom": "npm:^19.0.3"
+    "@types/react": "npm:^17.0.0"
+    "@types/react-dom": "npm:^17.0.0"
     "@vitejs/plugin-react": "npm:^4.3.4"
     eslint: "npm:^9.19.0"
     eslint-plugin-react-hooks: "npm:^5.0.0"
     eslint-plugin-react-refresh: "npm:^0.4.18"
     eslint-plugin-storybook: "npm:^0.11.3"
     globals: "npm:^15.14.0"
-    react: "npm:^19.0.0"
-    react-dom: "npm:^19.0.0"
+    react: "npm:^17.0.0"
+    react-dom: "npm:^17.0.0"
+    react-forms-store: "workspace:*"
+    react-forms-store-ux: "workspace:*"
     storybook: "npm:8.5.6"
     typescript: "npm:~5.7.2"
     typescript-eslint: "npm:^8.22.0"
@@ -6077,7 +6061,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"react-forms-store-ux@workspace:packages/react-forms-store-ux":
+"react-forms-store-ux@workspace:*, react-forms-store-ux@workspace:packages/react-forms-store-ux":
   version: 0.0.0-use.local
   resolution: "react-forms-store-ux@workspace:packages/react-forms-store-ux"
   dependencies:
@@ -6098,16 +6082,16 @@ __metadata:
 
 "react-forms-store@file:../react-forms-store::locator=react-forms-store-ux%40workspace%3Apackages%2Freact-forms-store-ux":
   version: 1.0.0
-  resolution: "react-forms-store@file:../react-forms-store#../react-forms-store::hash=336f41&locator=react-forms-store-ux%40workspace%3Apackages%2Freact-forms-store-ux"
+  resolution: "react-forms-store@file:../react-forms-store#../react-forms-store::hash=7ff347&locator=react-forms-store-ux%40workspace%3Apackages%2Freact-forms-store-ux"
   peerDependencies:
     react: ^17.0.0
     react-dom: ^17.0.0
     use-sync-external-store: ^1.4.0
-  checksum: 10c0/100770d875a639eb265877a3b06f884b00ce15506828fc962dee32104698b712ada129fee9c637c135158d0f4d71e5a8eda3b86364cb0b8b494fa6b7667e8273
+  checksum: 10c0/6986d6df8182c6929dcea4e0bdcc0658970d824e0b356af2bd7135d08deb892ab8d80a21e1b8fd05001b1fcc5fa3a950ff4f34b3d90d0d0dd03f1ed894f0c8db
   languageName: node
   linkType: hard
 
-"react-forms-store@workspace:packages/react-forms-store":
+"react-forms-store@workspace:*, react-forms-store@workspace:packages/react-forms-store":
   version: 0.0.0-use.local
   resolution: "react-forms-store@workspace:packages/react-forms-store"
   dependencies:
@@ -6169,7 +6153,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react@npm:^19.0.0":
+"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0":
   version: 19.0.0
   resolution: "react@npm:19.0.0"
   checksum: 10c0/9cad8f103e8e3a16d15cb18a0d8115d8bd9f9e1ce3420310aea381eb42aa0a4f812cf047bb5441349257a05fba8a291515691e3cb51267279b2d2c3253f38471
