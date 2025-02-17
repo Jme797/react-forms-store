@@ -3,3 +3,6 @@ export {default as TextInput} from './TextInput';
 export {default as PasswordInput} from './PasswordInput';
 export {default as EmailInput} from './EmailInput';
 export {default as NumberInput} from './NumberInput';
+export {default as SliderInput} from './SliderInput';
+export {default as SelectInput} from './SelectInput';
+export {default as MultipleSelectInput} from './MultipleSelectInput';
