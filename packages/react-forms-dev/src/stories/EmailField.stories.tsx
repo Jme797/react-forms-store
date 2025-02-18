@@ -5,7 +5,7 @@ import {Form, TextField} from 'react-forms-store';
 import {EmailInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/EmailField',
+    title: 'Text Fields/EmailField',
     component: EmailInput,
 } as Meta;
 

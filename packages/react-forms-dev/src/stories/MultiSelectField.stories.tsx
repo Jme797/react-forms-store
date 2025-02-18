@@ -7,7 +7,7 @@ import {Form, MultipleChoiceField} from 'react-forms-store';
 import {MultipleSelectInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/MultipleSelectInput',
+    title: 'Choice Fields/MultipleSelectInput',
     component: MultipleSelectInput,
 } as Meta;
 

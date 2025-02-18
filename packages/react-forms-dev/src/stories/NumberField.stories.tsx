@@ -5,7 +5,7 @@ import {Form, NumberField} from 'react-forms-store';
 import {NumberInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/NumberField',
+    title: 'Number Fields/NumberField',
     component: NumberInput,
 } as Meta;
 

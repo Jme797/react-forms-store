@@ -7,7 +7,7 @@ import {ChoiceField, Form} from 'react-forms-store';
 import {RadioGroupInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/RadioGroupInput',
+    title: 'Choice Fields/RadioGroupInput',
     component: RadioGroupInput,
 } as Meta;
 

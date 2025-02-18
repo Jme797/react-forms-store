@@ -5,7 +5,7 @@ import {Form, TextField} from 'react-forms-store';
 import {PasswordInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/PasswordField',
+    title: 'Text Fields/PasswordField',
     component: PasswordInput,
 } as Meta;
 

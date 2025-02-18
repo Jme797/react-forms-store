@@ -6,7 +6,7 @@ import {Form, TextField} from 'react-forms-store';
 import {LongTextInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/LongTextField',
+    title: 'Text Fields/LongTextField',
     component: LongTextInput,
     parameters: {
         docs: {

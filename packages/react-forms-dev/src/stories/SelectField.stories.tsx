@@ -7,7 +7,7 @@ import {ChoiceField, Form} from 'react-forms-store';
 import {SelectInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/SingleSelectInput',
+    title: 'Choice Fields/SingleSelectInput',
     component: SelectInput,
 } as Meta;
 

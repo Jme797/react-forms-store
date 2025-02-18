@@ -5,7 +5,7 @@ import {Form, NumberField} from 'react-forms-store';
 import {SliderInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/SliderField',
+    title: 'Number Fields/SliderField',
     component: SliderInput,
 } as Meta;
 

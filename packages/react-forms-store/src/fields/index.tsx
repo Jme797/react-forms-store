@@ -3,6 +3,7 @@ export * from './TextField';
 export * from './NumberField';
 export * from './ChoiceField';
 export * from './MultiChoiceField';
+export * from './DateField';
 
 // Text Input: For single-line text input.
 // Password Input: For password fields, where the input is masked.

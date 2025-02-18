@@ -5,7 +5,7 @@ import {Form, TextField} from 'react-forms-store';
 import {TextInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/TextField',
+    title: 'Text Fields/TextField',
     component: TextInput,
 } as Meta;
 

@@ -7,7 +7,7 @@ import {Form, MultipleChoiceField} from 'react-forms-store';
 import {CheckboxGroupInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Fields/CheckboxGroup',
+    title: 'Choice Fields/CheckboxGroup',
     component: CheckboxGroupInput,
 } as Meta;
 
