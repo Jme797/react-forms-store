@@ -16,8 +16,8 @@ type DatePickerInputProps = {
 const DatePickerInput: React.FC<DatePickerInputProps> = ({field}) => {
     const {value, errors, hasErrors} = useField(field);
 
-    const handleChange = (date: Date | null) => {
-        field.setValue(date ?? undefined);
+    const handleChange = (date: DateTime | null) => {
+        field.setValue(date?.toJSDate());
     };
 
     console.log(field.min);
@@ -28,11 +28,11 @@ const DatePickerInput: React.FC<DatePickerInputProps> = ({field}) => {
             <LocalizationProvider dateAdapter={AdapterLuxon}>
                 <DatePicker
                     label={field.label}
-                    value={value ?? null}
+                    value={value ? DateTime.fromJSDate(value) : null}
                     onChange={handleChange}
                     {...{views: ['year', 'month', 'day']}}
-                    minDate={DateTime.fromJSDate(field.min)}
-                    maxDate={DateTime.fromJSDate(field.max)}
+                    minDate={field.min && DateTime.fromJSDate(field.min)}
+                    maxDate={field.max && DateTime.fromJSDate(field.max)}
                 />
             </LocalizationProvider>
             {hasErrors && <FormHelperText>{errors.join(', ')}</FormHelperText>}

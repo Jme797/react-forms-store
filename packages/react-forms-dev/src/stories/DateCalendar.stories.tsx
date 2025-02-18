@@ -4,11 +4,11 @@ import React from 'react';
 
 import {DateField, Form, I18NProvider} from 'react-forms-store';
 
-import {DatePickerInput} from 'react-forms-store-ux';
+import {DateCalendarInput} from 'react-forms-store-ux';
 
 export default {
-    title: 'Date Fields/DatePicker',
-    component: DatePickerInput,
+    title: 'Date Fields/DateCalendar',
+    component: DateCalendarInput,
 } as Meta;
 
 const Template: StoryFn = args => {
@@ -49,7 +49,7 @@ const Template: StoryFn = args => {
                         gap: '1rem',
                     }}
                 >
-                    <DatePickerInput field={dateField} {...args} />
+                    <DateCalendarInput field={dateField} {...args} />
                 </div>
                 <button type="submit">Submit</button>
             </form>

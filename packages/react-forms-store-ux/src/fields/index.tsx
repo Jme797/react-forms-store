@@ -10,3 +10,4 @@ export {default as RadioGroupInput} from './RadioGroupInput';
 export {default as CheckboxGroupInput} from './CheckboxGroupInput';
 export {default as DateInput} from './DateInput';
 export {default as DatePickerInput} from './DatePickerInput';
+export {default as DateCalendarInput} from './DateCalendarInput';
