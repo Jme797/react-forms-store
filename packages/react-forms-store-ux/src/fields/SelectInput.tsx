@@ -25,8 +25,8 @@ const SelectInput = <T extends OptionBase>({field}: SelectInputProps<T>) => {
         );
     };
 
-    const renderValue = (selected: T) => {
-        return selected.value;
+    const renderValue = () => {
+        return value?.label;
     };
 
     return (
