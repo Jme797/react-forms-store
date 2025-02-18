@@ -17,6 +17,8 @@ export default {
         '^react$',
         '^react-forms-store$',
         '^react-forms-store-ux$',
-        '^@mui'
+        '^@mui',
+        '^../',
+        '^./',
     ],
 };

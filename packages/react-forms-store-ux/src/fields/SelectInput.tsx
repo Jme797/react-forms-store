@@ -18,7 +18,6 @@ const SelectInput = <T extends OptionBase>({field}: SelectInputProps<T>) => {
 
     const handleChange = (event: SelectChangeEvent<unknown>) => {
         const selectedValue = event.target.value;
-        console.log(selectedValue);
         field.setValue(
             field.choices.find(
                 choice => String(choice.value) === String(selectedValue)

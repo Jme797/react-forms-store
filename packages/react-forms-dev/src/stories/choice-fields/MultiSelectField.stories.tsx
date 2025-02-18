@@ -2,7 +2,7 @@ import {Meta, StoryFn} from '@storybook/react';
 
 import React from 'react';
 
-import {Form, MultipleChoiceField} from 'react-forms-store';
+import {Form, MultipleChoiceField, OptionBase} from 'react-forms-store';
 
 import {MultipleSelectInput} from 'react-forms-store-ux';
 
@@ -12,18 +12,13 @@ export default {
 } as Meta;
 
 const Template: StoryFn = args => {
-    type Option = {
-        id: number;
-        label: string;
-    };
-
-    const options: Option[] = [
-        {id: 1, label: 'Option 1'},
-        {id: 2, label: 'Option 2'},
-        {id: 3, label: 'Option 3'},
+    const options: OptionBase[] = [
+        {value: 1, label: 'Option 1'},
+        {value: 2, label: 'Option 2'},
+        {value: 3, label: 'Option 3'},
     ];
 
-    const multipleChoiceField = new MultipleChoiceField<Option>({
+    const multipleChoiceField = new MultipleChoiceField<OptionBase>({
         label: 'Multiple Choice',
         initValue: [],
         choices: options,
