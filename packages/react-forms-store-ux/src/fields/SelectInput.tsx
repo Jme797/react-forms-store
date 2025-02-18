@@ -21,13 +21,13 @@ const SelectInput = <T extends OptionBase>({field}: SelectInputProps<T>) => {
         console.log(selectedValue);
         field.setValue(
             field.choices.find(
-                choice => String(choice.id) === String(selectedValue)
+                choice => String(choice.value) === String(selectedValue)
             )!
         );
     };
 
     const renderValue = (selected: T) => {
-        return selected.id;
+        return selected.value;
     };
 
     return (
@@ -39,7 +39,7 @@ const SelectInput = <T extends OptionBase>({field}: SelectInputProps<T>) => {
                 renderValue={renderValue}
             >
                 {field.choices.map(choice => (
-                    <MenuItem key={choice.id} value={choice.id}>
+                    <MenuItem key={choice.value} value={choice.value}>
                         {choice.label}
                     </MenuItem>
                 ))}

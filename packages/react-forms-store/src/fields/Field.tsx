@@ -11,7 +11,7 @@ export type FieldOptions<v> = {
     initValue?: v;
     defaultValue?: v;
     validation?: Validator<Field<v>>['rules'];
-    required?: boolean | (() => boolean);
+    required?: boolean;
     disabled?: boolean;
     readonly?: boolean;
     testId?: string;
@@ -35,7 +35,7 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
     readonly testId?: string;
     readonly helpText?: string;
 
-    readonly required: boolean | (() => boolean) = false;
+    readonly required: boolean = false;
     readonly readonly: boolean;
     readonly subscribers: Set<() => void> = new Set();
     readonly validator: Validator<Field<v>> = new Validator<Field<v>>();
@@ -96,10 +96,7 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
      * @returns {boolean} True if the field is required, false otherwise.
      */
     isRequired = (): boolean => {
-        if (typeof this.required === 'boolean') {
-            return this.required;
-        }
-        return this.required();
+        return this.required;
     };
 
     /**
@@ -192,13 +189,6 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
         this._errors = await this.validator.validate(this);
         this.triggerSubscribers();
         return this._errors;
-    };
-
-    /**
-     * Blurs the field and triggers validation.
-     */
-    blurField = (): void => {
-        void this.validate();
     };
 
     /**

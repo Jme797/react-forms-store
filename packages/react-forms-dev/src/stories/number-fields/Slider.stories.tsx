@@ -15,9 +15,9 @@ const Template: StoryFn = args => {
         initValue: undefined,
         required: true,
         helpText: 'Please enter your age.',
-        min: 0,
-        max: 120,
-        step: 1,
+        min: 100,
+        max: 1000,
+        step: 20,
         validation: [
             {
                 rule: value => value !== undefined && value >= 0,

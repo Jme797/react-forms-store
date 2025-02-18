@@ -23,7 +23,7 @@ const RadioGroupInput = <T extends OptionBase>({
         const selectedValue = event.target.value;
 
         const item = field.choices.find(
-            choice => String(choice.id) === String(selectedValue)
+            choice => String(choice.value) === String(selectedValue)
         );
 
         field.setValue(item!);
@@ -31,11 +31,11 @@ const RadioGroupInput = <T extends OptionBase>({
 
     return (
         <FormControl fullWidth component="fieldset" error={hasErrors}>
-            <RadioGroup value={value?.id} onChange={handleChange}>
+            <RadioGroup value={value?.value} onChange={handleChange}>
                 {field.choices.map(choice => (
                     <FormControlLabel
-                        key={choice.id}
-                        value={choice.id}
+                        key={choice.value}
+                        value={choice.value}
                         control={<Radio />}
                         label={choice.label}
                     />

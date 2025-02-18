@@ -24,13 +24,13 @@ const CheckboxGroup = <T extends OptionBase>({
         const isChecked = event.target.checked;
 
         const actaualId = field.choices.find(
-            choice => String(choice.id) === selectedId
-        )!.id;
+            choice => String(choice.value) === selectedId
+        )!.value;
 
         if (isChecked) {
-            field.addValueById(actaualId);
+            field.addValueByValue(actaualId);
         } else {
-            field.removeValueById(actaualId);
+            field.removeValueByValue(actaualId);
         }
     };
 
@@ -39,14 +39,14 @@ const CheckboxGroup = <T extends OptionBase>({
             <FormGroup>
                 {field.choices.map(choice => (
                     <FormControlLabel
-                        key={choice.id}
+                        key={choice.value}
                         control={
                             <Checkbox
                                 checked={value.some(
-                                    item => item.id === choice.id
+                                    item => item.value === choice.value
                                 )}
                                 onChange={handleChange}
-                                value={choice.id}
+                                value={choice.value}
                             />
                         }
                         label={choice.label}
