@@ -1,0 +1,19 @@
+{
+  "entryPoints": [
+    "src/index.tsx"
+  ],
+  "out": "docs",
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.stories.tsx"
+  ],
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "includeVersion": true,
+  "readme": "none",
+  "tsconfig": "tsconfig.typedoc.json"
+}

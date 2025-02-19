@@ -70,3 +70,7 @@ ehthumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Generated documentation
+packages/react-forms-store/docs/
+packages/react-forms-store-ux/docs/
