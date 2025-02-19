@@ -6,8 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import {StorybookNamespaces} from '../src/utils/storybookNamespaces';
-
 import './global.css';
 
 const withThemeProvider = (Story, context) => {
