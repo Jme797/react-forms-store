@@ -1,6 +1,6 @@
 import useField from 'react-forms-store/src/utils/useField';
 
-import React from 'react';
+import React, {useRef} from 'react';
 
 import {FileField, MultipleFileField} from 'react-forms-store';
 
@@ -14,6 +14,8 @@ const FilePicker = <T extends FileField | MultipleFileField>({
     field,
 }: FilePickerProps<T>) => {
     const {value, errors, hasErrors} = useField<T>(field);
+    const inputId = `file-input-${field.name}`;
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (field instanceof MultipleFileField) {
@@ -27,17 +29,31 @@ const FilePicker = <T extends FileField | MultipleFileField>({
         }
     };
 
+    const handleButtonClick = () => {
+        if (inputRef.current) {
+            inputRef.current.click();
+        }
+    };
+
     return (
         <FormControl fullWidth error={hasErrors}>
-            <Button variant="contained" component="label">
-                {field.label}
-                <input
-                    type="file"
-                    hidden
-                    multiple={field instanceof MultipleFileField}
-                    onChange={handleChange}
-                />
-            </Button>
+            <div>
+                <Button
+                    variant="contained"
+                    component="span"
+                    onClick={handleButtonClick}
+                >
+                    {field.label}
+                </Button>
+            </div>
+            <input
+                id={inputId}
+                ref={inputRef}
+                type="file"
+                hidden
+                multiple={field instanceof MultipleFileField}
+                onChange={handleChange}
+            />
             {value && (
                 <div>
                     {value instanceof Array

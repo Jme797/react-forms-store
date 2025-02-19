@@ -31,6 +31,7 @@ const DateInput: React.FC<DateInputProps> = ({field}) => {
                         : ''
                 }
                 onChange={handleChange}
+                error={hasErrors}
                 InputLabelProps={{
                     shrink: true,
                 }}
