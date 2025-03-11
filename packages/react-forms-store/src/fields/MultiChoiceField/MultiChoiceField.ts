@@ -1,5 +1,5 @@
-import {OptionBase} from './ChoiceField';
-import {Field, FieldOptions} from './Field';
+import {OptionBase} from '../ChoiceField';
+import {Field, FieldOptions} from '../Field';
 
 type MultipleChoiceFieldOptions<T> = FieldOptions<T[]> & {
     choices: T[];

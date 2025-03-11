@@ -1,4 +1,4 @@
-import {Field, FieldOptions} from './Field';
+import {Field, FieldOptions} from '../Field';
 
 export type NumberFieldOptions = FieldOptions<number | undefined> & {
     min?: number;

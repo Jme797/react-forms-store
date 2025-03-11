@@ -1,4 +1,4 @@
-import {Field, FieldOptions} from './Field';
+import {Field, FieldOptions} from '../Field';
 
 type FileFieldOptions = FieldOptions<File | undefined>;
 
