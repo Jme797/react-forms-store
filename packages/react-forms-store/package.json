@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/Jme797/react-forms-store#readme",
     "dependencies": {
+        "@types/jest": "^29.5.14",
         "uuid": "^11.0.5"
     },
     "peerDependencies": {

@@ -1,4 +1,4 @@
-import {Field, FieldOptions} from './Field';
+import {Field, FieldOptions} from '../Field';
 import {isHSL, isHexColor, isRgbColor} from 'validator';
 
 type ColorFieldOptions = FieldOptions<string> & {

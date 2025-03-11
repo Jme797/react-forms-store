@@ -1,9 +1,9 @@
-import {Form} from '../forms/Form';
+import {Form} from '../../forms/Form';
 import {
     ValidationResult,
     Validator,
     ValidatorError,
-} from '../validation/Validator';
+} from '../../validation/Validator';
 import {v4 as uuidv4} from 'uuid';
 
 export type FieldOptions<v> = {

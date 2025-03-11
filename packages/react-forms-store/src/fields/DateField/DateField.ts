@@ -1,4 +1,4 @@
-import {Field, FieldOptions} from './Field';
+import {Field, FieldOptions} from '../Field';
 
 type DateFieldOptions = FieldOptions<Date | undefined> & {
     min?: Date;
@@ -16,7 +16,19 @@ export class DateField extends Field<Date | undefined> {
             label: options.label,
             initValue: options.initValue,
             required: options.required,
-            validation: options.validation,
+            validation: [
+                ...(options.validation || []),
+                {
+                    rule: value =>
+                        !options.min || !value || value >= options.min,
+                    error: `Date must be on or after ${options.min?.toLocaleDateString()}.`,
+                },
+                {
+                    rule: value =>
+                        !options.max || !value || value <= options.max,
+                    error: `Date must be on or before ${options.max?.toLocaleDateString()}.`,
+                },
+            ],
         });
 
         this.min = options.min;
