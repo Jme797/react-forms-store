@@ -1,10 +1,11 @@
 import {Meta, StoryFn} from '@storybook/react';
-import ColorPicker from 'react-forms-store-ux/src/fields/ColorPicker';
 
 import React from 'react';
 
 import {Form} from 'react-forms-store';
 import {ColorField} from 'react-forms-store';
+
+import {ColorPicker} from 'react-forms-store-ux';
 
 import {Box, Button, Container} from '@mui/material';
 

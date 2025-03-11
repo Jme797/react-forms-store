@@ -12,3 +12,4 @@ export {default as DateInput} from './DateInput';
 export {default as DatePickerInput} from './DatePickerInput';
 export {default as DateCalendarInput} from './DateCalendarInput';
 export {default as FilePicker} from './FilePicker';
+export {default as ColorPicker} from './ColorPicker';
