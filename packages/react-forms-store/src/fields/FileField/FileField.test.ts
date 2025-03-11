@@ -7,9 +7,10 @@ describe('FileField', () => {
         });
 
         expect(field.label).toBe('Test File');
-        expect(field.value).toBeNull();
+        expect(field.value).toBeUndefined();
         expect(field.required).toBe(false);
-        expect(field.errors).toHaveLength(0);
+        expect(field.errors.success).toBe(true);
+        expect(field.errors.errors).toBeUndefined();
     });
 
     it('should set and get value correctly', () => {
@@ -42,7 +43,7 @@ describe('FileField', () => {
         field.setValue(file);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate custom rule', async () => {
@@ -72,6 +73,6 @@ describe('FileField', () => {
         field.setValue(validFile);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 });

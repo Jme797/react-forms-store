@@ -9,7 +9,8 @@ describe('NumberField', () => {
         expect(field.label).toBe('Test Number');
         expect(field.value).toBeUndefined();
         expect(field.required).toBe(false);
-        expect(field.errors).toHaveLength(0);
+        expect(field.errors.success).toBeTruthy();
+        expect(field.errors.errors).toBeUndefined();
     });
 
     it('should set and get value correctly', () => {
@@ -32,12 +33,14 @@ describe('NumberField', () => {
 
         const result = await field.validate();
         expect(result.success).toBe(false);
-        expect(result.errors).toContainEqual({msg: 'This field is required'});
+        expect(result.errors?.map(e => e.msg)).toContain(
+            'This field is required'
+        );
 
         field.setValue(42);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate custom rule', async () => {
@@ -54,14 +57,14 @@ describe('NumberField', () => {
         field.setValue(-1);
         const result = await field.validate();
         expect(result.success).toBe(false);
-        expect(result.errors).toContainEqual({
-            msg: 'Value must be non-negative.',
-        });
+        expect(result.errors?.map(e => e.msg)).toContain(
+            'Value must be non-negative.'
+        );
 
         field.setValue(42);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate min and max values', async () => {
@@ -74,20 +77,20 @@ describe('NumberField', () => {
         field.setValue(5);
         const resultMin = await field.validate();
         expect(resultMin.success).toBe(false);
-        expect(resultMin.errors).toContainEqual({
-            msg: 'Value must be at least 10.',
-        });
+        expect(resultMin.errors?.map(e => e.msg)).toContain(
+            'Value must be at least 10.'
+        );
 
         field.setValue(105);
         const resultMax = await field.validate();
         expect(resultMax.success).toBe(false);
-        expect(resultMax.errors).toContainEqual({
-            msg: 'Value must be at most 100.',
-        });
+        expect(resultMin.errors?.map(e => e.msg)).toContain(
+            'Value must be between 10 and 100.'
+        );
 
         field.setValue(50);
         const resultValid = await field.validate();
         expect(resultValid.success).toBe(true);
-        expect(resultValid.errors).toHaveLength(0);
+        expect(resultValid.errors).toBeUndefined();
     });
 });

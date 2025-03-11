@@ -118,14 +118,6 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
     };
 
     /**
-     * Gets the current value of the field.
-     * @returns {v} The current value of the field.
-     */
-    getValue = (): v => {
-        return this.value;
-    };
-
-    /**
      * Dismisses the current validation errors of the field.
      */
     dismissErrors = (): void => {
@@ -205,6 +197,8 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
      */
     subscribe = (callback: () => void): (() => void) => {
         this.subscribers.add(callback);
-        return () => this.subscribers.delete(callback);
+        return () => {
+            this.subscribers.delete(callback)
+        };
     };
 }

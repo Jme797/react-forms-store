@@ -1,15 +1,16 @@
-import {Field, FieldOptions} from '../Field';
-import {isHSL, isHexColor, isRgbColor} from 'validator';
+import { Field, FieldOptions } from '../Field';
 
-type ColorFieldOptions = FieldOptions<string> & {
-    format?: 'hex' | 'rgb' | 'rgba' | 'hsl' | 'hsla';
+export type ColorFormat = 'hex' | 'rgb' | 'rgba' | 'hsl' | 'hsla';
+
+export type ColorFieldOptions = FieldOptions<string> & {
+    format?: ColorFormat;
 };
 
 export class ColorField extends Field<string> {
-    format: 'hex' | 'rgb' | 'rgba' | 'hsl' | 'hsla';
+    format: ColorFormat;
 
     constructor(options: ColorFieldOptions) {
-        const format = options.format ?? 'hex'; // Default to 'hex' if not provided
+        const format: ColorFormat = options.format ?? 'hex'; // Default to 'hex' if not provided
 
         const defaultValidation = [
             {
@@ -28,20 +29,18 @@ export class ColorField extends Field<string> {
         this.format = format;
     }
 
-    private static isValidColor(value: string, format: string): boolean {
+    static isValidColor(value: string, format: ColorFormat): boolean {
         switch (format) {
             case 'hex':
-                return isHexColor(value);
+                return /^#[0-9A-F]{6}$/i.test(value);
             case 'rgb':
-                return isRgbColor(value);
+                return /^rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)$/.test(value);
             case 'rgba':
-                return isRgbColor(value); // isRgbColor also validates rgba
+                return /^rgba\((\d{1,3}), (\d{1,3}), (\d{1,3}), (0|1|0?\.\d+)\)$/.test(value);
             case 'hsl':
-                return isHSL(value);
+                return /^hsl\(\d{1,3}, \d{1,3}%, \d{1,3}%\)$/.test(value);
             case 'hsla':
-                return isHSL(value); // isHSL also validates hsla
-            default:
-                return false;
+                return /^hsla\(\d{1,3}, \d{1,3}%, \d{1,3}%, (0|1|0?\.\d+)\)$/.test(value);
         }
     }
 }

@@ -51,7 +51,7 @@ describe('ChoiceField', () => {
         field.setValue({value: 'option1', label: 'Option 1'});
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate custom rule', async () => {
@@ -77,6 +77,6 @@ describe('ChoiceField', () => {
         field.setValue({value: 'option1', label: 'Option 1'});
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 });

@@ -19,7 +19,28 @@ export class NumberField extends Field<number | undefined> {
                     if (options.min !== undefined && value < options.min) {
                         return false;
                     }
+                    return true;
+                },
+                error: `Value must be at least ${options.min}.`,
+            },
+            {
+                rule: (value: number | undefined) => {
+                    if (value === undefined) return true;
                     if (options.max !== undefined && value > options.max) {
+                        return false;
+                    }
+                    return true;
+                },
+                error: `Value must be at most ${options.max}.`,
+            },
+            {
+                rule: (value: number | undefined) => {
+                    if (value === undefined) return true;
+                    if (
+                        options.min !== undefined &&
+                        options.max !== undefined &&
+                        (value < options.min || value > options.max)
+                    ) {
                         return false;
                     }
                     return true;

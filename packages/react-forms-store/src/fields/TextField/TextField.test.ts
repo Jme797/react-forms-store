@@ -4,13 +4,26 @@ describe('TextField', () => {
     it('should initialize with default values', () => {
         const field = new TextField({
             label: 'Test Text',
-            initValue: '',
         });
 
         expect(field.label).toBe('Test Text');
         expect(field.value).toBe('');
         expect(field.required).toBe(false);
-        expect(field.errors).toHaveLength(0);
+        expect(field.errors.success).toBeTruthy();
+        expect(field.errors.errors).toBeUndefined();
+    });
+
+    it('should initialize with default values', () => {
+        const field = new TextField({
+            label: 'Test Text',
+            initValue: 'init',
+        });
+
+        expect(field.label).toBe('Test Text');
+        expect(field.value).toBe('init');
+        expect(field.required).toBe(false);
+        expect(field.errors.success).toBeTruthy();
+        expect(field.errors.errors).toBeUndefined();
     });
 
     it('should set and get value correctly', () => {
@@ -40,7 +53,7 @@ describe('TextField', () => {
         field.setValue('test value');
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate custom rule', async () => {
@@ -65,7 +78,7 @@ describe('TextField', () => {
         field.setValue('valid value');
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should check if the field has a value', () => {

@@ -29,4 +29,12 @@ export class MultipleChoiceField<T extends OptionBase> extends Field<T[]> {
     removeValueByValue(value: string | number) {
         this.setValue(this.value.filter(v => v.value !== value));
     }
+
+    /**
+     * Checks if the field has any selected values.
+     * @returns {boolean} True if the field has one or more selected values, false otherwise.
+     */
+    hasValue = (): boolean => {
+        return this.value.length > 0;
+    };
 }

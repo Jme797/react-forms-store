@@ -61,7 +61,7 @@ describe('MultipleChoiceField', () => {
         field.setValue([{value: 'option1', label: 'Option 1'}]);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate custom rule', async () => {
@@ -93,6 +93,64 @@ describe('MultipleChoiceField', () => {
         ]);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
+    });
+
+    it('should add value by value', () => {
+        const field = new MultipleChoiceField({
+            label: 'Test Multiple Choice',
+            choices: [
+                {value: 'option1', label: 'Option 1'},
+                {value: 'option2', label: 'Option 2'},
+                {value: 'option3', label: 'Option 3'},
+            ],
+        });
+
+        field.addValueByValue('option1');
+        expect(field.value).toEqual([{value: 'option1', label: 'Option 1'}]);
+
+        field.addValueByValue('option2');
+        expect(field.value).toEqual([
+            {value: 'option1', label: 'Option 1'},
+            {value: 'option2', label: 'Option 2'},
+        ]);
+    });
+
+    it('should remove value by value', () => {
+        const field = new MultipleChoiceField({
+            label: 'Test Multiple Choice',
+            choices: [
+                {value: 'option1', label: 'Option 1'},
+                {value: 'option2', label: 'Option 2'},
+                {value: 'option3', label: 'Option 3'},
+            ],
+        });
+
+        field.setValue([
+            {value: 'option1', label: 'Option 1'},
+            {value: 'option2', label: 'Option 2'},
+        ]);
+
+        field.removeValueByValue('option1');
+        expect(field.value).toEqual([{value: 'option2', label: 'Option 2'}]);
+
+        field.removeValueByValue('option2');
+        expect(field.value).toEqual([]);
+    });
+
+    it('should check if the field has a value', () => {
+        const field = new MultipleChoiceField({
+            label: 'Test Multiple Choice',
+            choices: [
+                {value: 'option1', label: 'Option 1'},
+                {value: 'option2', label: 'Option 2'},
+                {value: 'option3', label: 'Option 3'},
+            ],
+        });
+
+        expect(field.hasValue()).toBe(false);
+
+        field.setValue([{value: 'option1', label: 'Option 1'}]);
+        expect(field.hasValue()).toBe(true);
     });
 });

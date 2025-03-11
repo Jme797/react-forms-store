@@ -37,7 +37,7 @@ describe('DateField', () => {
         field.setValue(new Date(2023, 0, 1));
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate custom rule', async () => {
@@ -61,7 +61,7 @@ describe('DateField', () => {
         field.setValue(new Date(2023, 0, 1));
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate min date', async () => {
@@ -81,7 +81,7 @@ describe('DateField', () => {
         field.setValue(new Date(2023, 0, 1));
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate max date', async () => {
@@ -101,7 +101,7 @@ describe('DateField', () => {
         field.setValue(new Date(2023, 11, 31));
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate both min and max dates', async () => {
@@ -130,6 +130,23 @@ describe('DateField', () => {
         field.setValue(new Date(2023, 6, 15));
         const resultValid = await field.validate();
         expect(resultValid.success).toBe(true);
-        expect(resultValid.errors).toHaveLength(0);
+        expect(resultValid.errors).toBeUndefined();
+    });
+
+    it('should handle dateTime option correctly', () => {
+        const field = new DateField({
+            label: 'Test DateTime',
+            dateTime: true,
+        });
+
+        expect(field.dateTime).toBe(true);
+
+        const dateTime = new Date(2023, 0, 1, 12, 30);
+        field.setValue(dateTime);
+        expect(field.value).toEqual(dateTime);
+
+        const newDateTime = new Date(2023, 11, 31, 23, 59);
+        field.setValue(newDateTime);
+        expect(field.value).toEqual(newDateTime);
     });
 });

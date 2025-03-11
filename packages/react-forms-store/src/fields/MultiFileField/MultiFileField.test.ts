@@ -9,7 +9,24 @@ describe('MultipleFileField', () => {
         expect(field.label).toBe('Test Multi File');
         expect(field.value).toEqual([]);
         expect(field.required).toBe(false);
-        expect(field.errors).toHaveLength(0);
+        expect(field.errors.success).toBeTruthy();
+        expect(field.errors.errors).toBeUndefined();
+    });
+
+    it('should initialize with provided initial value', () => {
+        const file1 = new File(['content1'], 'test1.txt', { type: 'text/plain' });
+        const file2 = new File(['content2'], 'test2.txt', { type: 'text/plain' });
+
+        const field = new MultipleFileField({
+            label: 'Test Multi File',
+            initValue: [file1, file2],
+        });
+
+        expect(field.label).toBe('Test Multi File');
+        expect(field.value).toEqual([file1, file2]);
+        expect(field.required).toBe(false);
+        expect(field.errors.success).toBeTruthy();
+        expect(field.errors.errors).toBeUndefined();
     });
 
     it('should set and get value correctly', () => {
@@ -40,7 +57,7 @@ describe('MultipleFileField', () => {
         field.setValue([file]);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 
     it('should validate custom rule', async () => {
@@ -71,6 +88,6 @@ describe('MultipleFileField', () => {
         field.setValue([validFile]);
         const resultAfterSetValue = await field.validate();
         expect(resultAfterSetValue.success).toBe(true);
-        expect(resultAfterSetValue.errors).toHaveLength(0);
+        expect(resultAfterSetValue.errors).toBeUndefined();
     });
 });
