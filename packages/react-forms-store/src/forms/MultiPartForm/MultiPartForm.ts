@@ -8,7 +8,6 @@ export class MultiPartForm<
     currentStep: keyof State;
     steps: (keyof State)[];
     forms: {[K in keyof State]: Form<State[K]>};
-    private formElement: HTMLFormElement | null = null;
     private readonly subscribers: Set<() => void> = new Set();
 
     constructor(fields: State) {
@@ -24,14 +23,6 @@ export class MultiPartForm<
     }
 
     /**
-     * Sets the form element reference.
-     * @param {HTMLFormElement | null} element - The form element.
-     */
-    setFormElement = (element: HTMLFormElement | null) => {
-        this.formElement = element;
-    };
-
-    /**
      * Moves to the next step in the form.
      * @returns {boolean} True if the step was changed, false otherwise.
      */
@@ -40,7 +31,6 @@ export class MultiPartForm<
         if (currentIndex < this.steps.length - 1) {
             this.currentStep = this.steps[currentIndex + 1];
             this.triggerSubscribers();
-            this.resetFocus();
             return true;
         }
         return false;
@@ -55,7 +45,6 @@ export class MultiPartForm<
         if (currentIndex > 0) {
             this.currentStep = this.steps[currentIndex - 1];
             this.triggerSubscribers();
-            this.resetFocus();
             return true;
         }
         return false;
@@ -137,14 +126,5 @@ export class MultiPartForm<
      */
     triggerSubscribers = () => {
         this.subscribers.forEach(callback => callback());
-    };
-
-    /**
-     * Resets focus to the form element.
-     */
-    private resetFocus = () => {
-        if (this.formElement) {
-            this.formElement.focus();
-        }
     };
 }

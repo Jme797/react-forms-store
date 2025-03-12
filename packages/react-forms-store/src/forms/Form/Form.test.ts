@@ -120,4 +120,14 @@ describe('Form', () => {
         });
         expect(form.isDirty()).toBe(false);
     });
+
+    it('should allow unsubscribing from the form', () => {
+        const form = createForm();
+        const subscriber = jest.fn();
+        const unsubscribe = form.subscribe(subscriber);
+
+        unsubscribe();
+        form.triggerSubscribers()
+        expect(subscriber).not.toHaveBeenCalled();
+    });
 });
