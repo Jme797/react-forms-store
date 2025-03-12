@@ -1,5 +1,6 @@
 // @ts-expect-error Jest Mock.
-window.File = class MockFile {
+// eslint-disable-next-line no-undef
+global.File = class MockFile {
     parts: BlobPart[];
     filename: string;
     properties: FilePropertyBag;
