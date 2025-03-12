@@ -26,9 +26,6 @@ jobs:
             - name: Run tests
               run: make test
 
-            - name: Build the project
-              run: yarn build
-
             - name: Authenticate with GitHub
               uses: shimataro/ssh-key-action@v2
               with:
