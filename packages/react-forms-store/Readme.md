@@ -18,10 +18,8 @@ This example demonstrates how to create a basic form using the `Form` class.
 import {Form, NumberField, TextField} from 'react-forms-store';
 
 const form = new Form({
-    fields: {
-        name: new TextField({label: 'Name', required: true}),
-        age: new NumberField({label: 'Age', required: true, min: 0}),
-    },
+    name: new TextField({label: 'Name', required: true}),
+    age: new NumberField({label: 'Age', required: true, min: 0}),
 });
 
 form.setValue('name', 'John Doe');
