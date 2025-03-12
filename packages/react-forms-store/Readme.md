@@ -15,12 +15,12 @@ npm install react-forms-store
 This example demonstrates how to create a basic form using the `Form` class.
 
 ```typescript
-import { Form, NumberField, TextField } from 'react-forms-store';
+import {Form, NumberField, TextField} from 'react-forms-store';
 
 const form = new Form({
     fields: {
-        name: new TextField({ label: 'Name', required: true }),
-        age: new NumberField({ label: 'Age', required: true, min: 0 }),
+        name: new TextField({label: 'Name', required: true}),
+        age: new NumberField({label: 'Age', required: true, min: 0}),
     },
 });
 
@@ -30,7 +30,7 @@ form.setValue('age', 30);
 form.submit(async data => {
     console.log('Form submitted successfully:', data);
 });
-````
+```
 
 # Subscribing to field state in a Field component
 
@@ -78,7 +78,6 @@ This example demonstrates how to use a basic field in React with the `useField` 
 ```typescript
 import React from 'react';
 import { useField } from './your-utils';
-import { useSyncExternalStore } from 'react';
 
 const TextFieldComponent = ({ field }: { field: TextField }) => {
     const { value, hasErrors, errors } = useField();
@@ -136,42 +135,29 @@ const FormComponent = () => {
 This example demonstrates how to create a multi-part form using the `MultiPartForm` class interface.
 
 ```typescript
-import {FileField, Form, MultiPartForm, TextField} from 'react-forms-store';
+import {FileField, MultiPartForm, TextField} from 'react-forms-store';
 
-const personalInfoForm = new Form({
-    fields: {
+const multiPartForm = new MultiPartForm({
+    personalInfo: {
         firstName: new TextField({label: 'First Name', required: true}),
         lastName: new TextField({label: 'Last Name', required: true}),
     },
-});
-
-const contactInfoForm = new Form({
-    fields: {
+    contactInfo: {
         email: new TextField({label: 'Email', required: true}),
         phone: new TextField({label: 'Phone', required: true}),
     },
-});
-
-const documentForm = new Form({
-    fields: {
+    documents: {
         resume: new FileField({label: 'Resume', required: true}),
     },
 });
 
-const multiPartForm = new MultiPartForm({
-    forms: {
-        personalInfo: personalInfoForm,
-        contactInfo: contactInfoForm,
-        documents: documentForm,
-    },
-});
-
-personalInfoForm.setValue('firstName', 'John');
-personalInfoForm.setValue('lastName', 'Doe');
-contactInfoForm.setValue('email', 'john.doe@example.com');
-contactInfoForm.setValue('phone', '1234567890');
-documentForm.setValue(
-    'resume',
+multiPartForm.forms.personalInfoForm.fields.firstName.setValue('John');
+multiPartForm.forms.personalInfoForm.fields.lastName.setValue('Doe');
+multiPartForm.forms.contactInfoForm.fields.email.setValue(
+    'john.doe@example.com'
+);
+multiPartForm.forms.contactInfoForm.fields.phone.setValue('1234567890');
+multiPartForm.forms.documentForm.fields.resume.setValue(
     new File(['content'], 'resume.pdf', {type: 'application/pdf'})
 );
 

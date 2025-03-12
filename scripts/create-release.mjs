@@ -36,7 +36,7 @@ inquirer
 
         // Run tests (commented out for now)
         try {
-            execSync('make test', { stdio: 'inherit' });
+            execSync('make test', {stdio: 'inherit'});
             console.log('Tests passed successfully.');
         } catch (error) {
             console.error('Tests failed:', error);
