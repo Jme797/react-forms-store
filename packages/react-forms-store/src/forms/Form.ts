@@ -94,7 +94,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
             const k = key as keyof State;
             const v: Field<any, Form<any>> = value;
 
-            data[k] = v.getValue();
+            data[k] = v.value;
         }
 
         return data;
