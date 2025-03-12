@@ -15,10 +15,12 @@
     "format": "yarn prettier --write packages | grep -v unchanged"
   },
   "packageManager": "yarn@4.6.0",
-  "dependencies": {
+  "devDependencies": {
+    "inquirer": "^12.4.3",
     "merge-prettier-plugins": "^1.0.3",
     "prettier": "^3.5.1",
     "prettier-plugin-import-sorting": "^1.1.23",
-    "prettier-remove-unused-imports": "^1.1.21"
+    "prettier-remove-unused-imports": "^1.1.21",
+    "semver": "^7.7.1"
   }
 }
