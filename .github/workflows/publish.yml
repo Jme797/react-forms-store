@@ -28,13 +28,7 @@ jobs:
             - name: Set version from tag
               run: |
                   VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
-                  for package in packages/*; do
-                    if [ -d "$package" ]; then
-                      cd $package
-                      npm version $VERSION --no-git-tag-version
-                      cd ../..
-                    fi
-                  done
+                  yarn node scripts/version-bump.js $VERSION
 
             - name: Publish to npm
               run: make publish
