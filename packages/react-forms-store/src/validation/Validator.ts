@@ -3,11 +3,11 @@ import {Rules} from './types';
 
 export class ValidatorError {
     msg: string;
-    index?: number;
+    // index?: number;
 
     constructor(msg: string, index?: number) {
         this.msg = msg;
-        this.index = index;
+        // this.index = index;
     }
 }
 
@@ -51,12 +51,12 @@ export class Validator<F extends Field> {
                 if (result === false) {
                     errors.push(new ValidatorError(rule.error));
                 }
-                /* If array of indexes create an error for each indvidual index */
-                if (Array.isArray(result)) {
-                    result.forEach(index => {
-                        errors.push(new ValidatorError(rule.error, index));
-                    });
-                }
+                // /* If array of indexes create an error for each indvidual index */
+                // if (Array.isArray(result)) {
+                //     result.forEach(index => {
+                //         errors.push(new ValidatorError(rule.error, index));
+                //     });
+                // }
             }
 
             this.valid = errors.length === 0;
