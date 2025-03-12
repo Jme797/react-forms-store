@@ -23,7 +23,7 @@ const SelectInput = <T extends OptionBase>({field}: SelectInputProps<T>) => {
         field.setValue(
             field.choices.find(
                 choice => String(choice.value) === String(selectedValue)
-            )!
+            )
         );
     };
 

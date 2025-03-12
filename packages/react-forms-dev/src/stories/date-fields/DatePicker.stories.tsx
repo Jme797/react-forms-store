@@ -2,7 +2,7 @@ import {Meta, StoryFn} from '@storybook/react';
 
 import React from 'react';
 
-import {DateField, Form, I18NProvider} from 'react-forms-store';
+import {DateField, Form} from 'react-forms-store';
 
 import {DatePickerInput} from 'react-forms-store-ux';
 
@@ -33,27 +33,25 @@ const Template: StoryFn = args => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        form.submit(async data => {
+        void form.submit(data => {
             console.log('Form submitted with data:', data);
             alert('Form submitted!');
         });
     };
 
     return (
-        <I18NProvider timezone="UTC">
-            <form onSubmit={handleSubmit}>
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '1rem',
-                    }}
-                >
-                    <DatePickerInput field={dateField} {...args} />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </I18NProvider>
+        <form onSubmit={handleSubmit}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem',
+                }}
+            >
+                <DatePickerInput field={dateField} {...args} />
+            </div>
+            <button type="submit">Submit</button>
+        </form>
     );
 };
 

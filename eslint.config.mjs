@@ -7,6 +7,11 @@ import globals from 'globals';
 
 export default [
     {
+        ignores: [
+            '.yarn',
+        ]
+    },
+    {
         files: ['**/*.ts', '**/*.tsx'],
         languageOptions: {
             globals: {
@@ -17,19 +22,21 @@ export default [
                 ecmaVersion: 2020,
                 sourceType: 'module',
                 project: './tsconfig.json',
+                project: [
+                    './packages/*/tsconfig.json',
+                    './packages/*/tsconfig.*.json',
+                ],
             },
         },
         plugins: {
             js,
             '@typescript-eslint': typescript,
-            i18next,
             jest,
         },
         rules: {
             ...js.configs.recommended.rules,
             ...typescript.configs.recommended.rules,
             ...typescript.configs['recommended-requiring-type-checking'].rules,
-            ...i18next.configs['flat/recommended'].rules,
             ...jest.configs.recommended.rules,
         },
     },
@@ -50,7 +57,7 @@ export default [
         },
     },
     {
-        files: ['scripts/**', 'jest.config.js'],
+        files: ['packages/*/scripts/**', 'scripts/**', 'jest.config.js'],
         languageOptions: {
             globals: {
                 ...globals.node,
@@ -75,6 +82,16 @@ export default [
         rules: {
             ...jest.configs.recommended.rules,
             // Add any custom rules here
+        },
+    },
+    {
+        ignores: ['packages/react-forms-dev/**'],
+        files: ['packages/**'],
+        plugins: {
+            i18next,
+        },
+        rules: {
+            ...i18next.configs['flat/recommended'].rules,
         },
     },
 ];

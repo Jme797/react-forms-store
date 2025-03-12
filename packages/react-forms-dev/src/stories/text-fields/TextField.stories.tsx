@@ -1,5 +1,7 @@
 import {Meta, StoryFn} from '@storybook/react';
 
+import React from 'react';
+
 import {Form, TextField} from 'react-forms-store';
 
 import {TextInput} from 'react-forms-store-ux';
@@ -29,7 +31,7 @@ const Template: StoryFn = args => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        form.submit(async data => {
+        void form.submit(data => {
             console.log('Form submitted with data:', data);
             alert('Form submitted!');
         });

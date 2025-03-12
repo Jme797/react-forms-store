@@ -33,7 +33,7 @@ const Template: StoryFn = args => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        form.submit(async data => {
+        void form.submit(data => {
             console.log('Form submitted with data:', data);
             alert('Form submitted!');
         });

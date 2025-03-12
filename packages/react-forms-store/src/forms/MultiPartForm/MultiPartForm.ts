@@ -74,7 +74,7 @@ export class MultiPartForm<
     submitStep = async (
         handleSubmit: (data: {
             [Key in keyof State]: ReturnType<Form<State[Key]>['getData']>;
-        }) => Promise<void>
+        }) => Promise<void> | void
     ) => {
         const currentForm = this.getCurrentForm();
         currentForm.submitting = true;

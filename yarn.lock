@@ -9048,6 +9048,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-forms-store-monorepo@workspace:."
   dependencies:
+    "@eslint/js": "npm:^9.22.0"
+    "@typescript-eslint/eslint-plugin": "npm:^8.26.1"
+    "@typescript-eslint/parser": "npm:^8.26.1"
+    eslint: "npm:^9.22.0"
+    eslint-plugin-i18next: "npm:^6.1.1"
+    eslint-plugin-jest: "npm:^28.11.0"
     inquirer: "npm:^12.4.3"
     merge-prettier-plugins: "npm:^1.0.3"
     prettier: "npm:^3.5.1"
@@ -9096,14 +9102,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-forms-store@workspace:packages/react-forms-store"
   dependencies:
-    "@eslint/js": "npm:^9.22.0"
     "@types/jest": "npm:^29.5.14"
-    "@typescript-eslint/eslint-plugin": "npm:^8.26.1"
-    "@typescript-eslint/parser": "npm:^8.26.1"
     esbuild: "npm:^0.14.0"
-    eslint: "npm:^9.22.0"
-    eslint-plugin-i18next: "npm:^6.1.1"
-    eslint-plugin-jest: "npm:^28.11.0"
     i18next: "npm:^24.2.2"
     i18next-parser: "npm:^9.3.0"
     jest: "npm:^29.0.0"

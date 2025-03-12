@@ -9,7 +9,7 @@ type UseFieldResult<T extends Field> = {
 };
 
 const useField = <T extends Field>(field: T): UseFieldResult<T> => {
-    const value = useSyncExternalStore(field.subscribe, () => field.value);
+    const value = useSyncExternalStore(field.subscribe, () => field.value as T);
     const errors = useSyncExternalStore(field.subscribe, () => field.errors);
 
     const errorMessages = errors.errors?.map(error => error.msg) || [];

@@ -4,7 +4,7 @@ import FilePicker from 'react-forms-store-ux/src/fields/FilePicker';
 import React from 'react';
 
 import {Form} from 'react-forms-store';
-import {MultipleFileField, SingleFileField} from 'react-forms-store';
+import {FileField, MultipleFileField} from 'react-forms-store';
 
 import {Box, Button, Container} from '@mui/material';
 
@@ -14,7 +14,7 @@ export default {
 } as Meta;
 
 const Template: StoryFn = args => {
-    const singleFileField = new SingleFileField({
+    const singleFileField = new FileField({
         label: 'Upload a File',
         initValue: undefined,
         required: true,
@@ -46,7 +46,7 @@ const Template: StoryFn = args => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        form.submit(async data => {
+        void form.submit(data => {
             console.log('Form submitted with data:', data);
             alert('Form submitted!');
         });

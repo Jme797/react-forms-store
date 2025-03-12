@@ -145,7 +145,7 @@ const MultiPartFormExample: React.FC = () => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        form.submitStep(async data => {
+        void form.submitStep(data => {
             console.log('Form submitted with data:', data);
             alert('Form submitted!');
         });

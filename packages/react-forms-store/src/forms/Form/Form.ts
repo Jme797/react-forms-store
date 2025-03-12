@@ -115,7 +115,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
     submit = async (
         handleSubmit: (data: {
             [Key in keyof State]: State[Key]['value'];
-        }) => Promise<void>
+        }) => Promise<void> | void
     ) => {
         this.submitting = true;
         this.triggerSubscribers();

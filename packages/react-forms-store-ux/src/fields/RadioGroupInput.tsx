@@ -28,7 +28,7 @@ const RadioGroupInput = <T extends OptionBase>({
             choice => String(choice.value) === String(selectedValue)
         );
 
-        field.setValue(item!);
+        field.setValue(item);
     };
 
     return (
