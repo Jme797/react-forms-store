@@ -1,4 +1,4 @@
-import {MultipleChoiceField, OptionBase, useField} from 'react-forms-store';
+import {MultipleChoiceField, OptionBase} from 'react-forms-store';
 
 import {
     FormControl,
@@ -8,6 +8,8 @@ import {
     Select,
     SelectChangeEvent,
 } from '@mui/material';
+
+import {useField} from '../utils';
 
 type MultipleSelectInputProps<T extends OptionBase> = {
     field: MultipleChoiceField<T>;

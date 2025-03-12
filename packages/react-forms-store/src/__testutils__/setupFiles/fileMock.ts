@@ -1,5 +1,5 @@
 // @ts-expect-error Jest Mock.
-global.File = class MockFile {
+window.File = class MockFile {
     parts: BlobPart[];
     filename: string;
     properties: FilePropertyBag;

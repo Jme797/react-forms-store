@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ChoiceField, OptionBase, useField} from 'react-forms-store';
+import {ChoiceField, OptionBase} from 'react-forms-store';
 
 import {
     FormControl,
@@ -9,6 +9,8 @@ import {
     Radio,
     RadioGroup,
 } from '@mui/material';
+
+import {useField} from '../utils';
 
 type RadioGroupInputProps<T extends OptionBase> = {
     field: ChoiceField<T>;

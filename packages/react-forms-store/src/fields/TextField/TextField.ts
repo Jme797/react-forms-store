@@ -6,7 +6,10 @@ export type TextFieldOptions = Omit<FieldOptions<string>, 'initValue'> & {
 
 export class TextField extends Field<string> {
     constructor(options: TextFieldOptions) {
-        super({...options, initValue: options.initValue ?? ''});
+        super({
+            ...options,
+            initValue: options.initValue ?? '',
+        });
     }
 
     /**

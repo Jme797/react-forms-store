@@ -102,9 +102,7 @@ export class MultiPartForm<
             [Key in keyof State]: ReturnType<Form<State[Key]>['getData']>;
         }> = {};
         for (const step of this.steps) {
-            data[step] = this.forms[step].getData() as ReturnType<
-                Form<State[typeof step]>['getData']
-            >;
+            data[step] = this.forms[step].getData();
         }
         return data as {
             [Key in keyof State]: ReturnType<Form<State[Key]>['getData']>;

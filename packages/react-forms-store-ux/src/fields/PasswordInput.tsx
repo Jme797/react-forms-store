@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {TextField, useField} from 'react-forms-store';
+import {TextField} from 'react-forms-store';
 
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 import {
@@ -8,6 +8,8 @@ import {
     InputAdornment,
     TextField as MuiTextField,
 } from '@mui/material';
+
+import {useField} from '../utils';
 
 type PasswordInputProps = {
     field: TextField;

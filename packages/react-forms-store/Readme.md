@@ -78,7 +78,7 @@ import React from 'react';
 import { useField } from './your-utils';
 
 const TextFieldComponent = ({ field }: { field: TextField }) => {
-    const { value, hasErrors, errors } = useField();
+    const { value, hasErrors, errors } = useField(field);
 
     const handleChange = (e: React.ChangeEvent) => {
         field.setValue(e.target.value);

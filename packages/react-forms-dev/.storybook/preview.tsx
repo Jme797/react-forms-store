@@ -2,11 +2,26 @@ import type {Preview} from '@storybook/react';
 
 import React from 'react';
 
+import {initI18n} from 'react-forms-store';
+
 import CssBaseline from '@mui/material/CssBaseline';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import './global.css';
+
+await initI18n({
+    en: {
+        translation: {
+            description: 'English',
+        },
+    },
+    fr: {
+        translation: {
+            description: 'French',
+        },
+    },
+});
 
 const withThemeProvider = (Story, context) => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');

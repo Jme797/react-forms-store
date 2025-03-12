@@ -1,5 +1,4 @@
 import {DateTime} from 'luxon';
-import useField from 'react-forms-store/src/utils/useField';
 
 import React from 'react';
 
@@ -8,6 +7,8 @@ import {DateField} from 'react-forms-store';
 import {FormControl, FormHelperText, Typography} from '@mui/material';
 import {DateCalendar, LocalizationProvider} from '@mui/x-date-pickers';
 import {AdapterLuxon} from '@mui/x-date-pickers/AdapterLuxon';
+
+import {useField} from '../utils';
 
 type DateCalendarInputProps = {
     field: DateField;

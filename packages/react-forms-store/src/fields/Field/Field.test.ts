@@ -150,7 +150,7 @@ describe('Field', () => {
             initValue: '',
             validation: [
                 {
-                    rule: async value => value === 'valid value',
+                    rule: value => value === 'valid value',
                     error: 'Only "valid value" is valid.',
                 },
             ],

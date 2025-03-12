@@ -1,10 +1,10 @@
-import useField from 'react-forms-store/src/utils/useField';
-
 import React, {useRef} from 'react';
 
 import {FileField, MultipleFileField} from 'react-forms-store';
 
 import {Button, FormControl, FormHelperText} from '@mui/material';
+
+import {useField} from '../utils';
 
 type FilePickerProps<T> = {
     field: T;

@@ -2,7 +2,7 @@ import {ColorResult, SketchPicker} from 'react-color';
 
 import React, {useRef, useState} from 'react';
 
-import {ColorField, useField} from 'react-forms-store';
+import {ColorField} from 'react-forms-store';
 
 import {
     ClickAwayListener,
@@ -11,6 +11,8 @@ import {
     Popper,
     TextField,
 } from '@mui/material';
+
+import {useField} from '../utils';
 
 type ColorPickerProps = {
     field: ColorField;

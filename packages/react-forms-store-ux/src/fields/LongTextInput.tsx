@@ -1,8 +1,10 @@
 import React from 'react';
 
-import {TextField as CustomTextField, useField} from 'react-forms-store';
+import {TextField as CustomTextField} from 'react-forms-store';
 
 import {TextField as MuiTextField} from '@mui/material';
+
+import {useField} from '../utils';
 
 type LongTextInputProps = {
     field: CustomTextField;

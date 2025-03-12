@@ -1,4 +1,4 @@
-import {ChoiceField, OptionBase, useField} from 'react-forms-store';
+import {ChoiceField, OptionBase} from 'react-forms-store';
 
 import {
     FormControl,
@@ -8,6 +8,8 @@ import {
     Select,
     SelectChangeEvent,
 } from '@mui/material';
+
+import {useField} from '../utils';
 
 type SelectInputProps<T extends OptionBase> = {
     field: ChoiceField<T>;

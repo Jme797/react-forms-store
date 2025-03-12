@@ -5,7 +5,7 @@ export class ValidatorError {
     msg: string;
     // index?: number;
 
-    constructor(msg: string, index?: number) {
+    constructor(msg: string/* , index?: number */) {
         this.msg = msg;
         // this.index = index;
     }
@@ -46,7 +46,7 @@ export class Validator<F extends Field> {
                 errors.push(new ValidatorError('This field is required'));
             }
 
-            for await (const rule of this.rules) {
+            for (const rule of this.rules) {
                 const result = await rule.rule(value);
                 if (result === false) {
                     errors.push(new ValidatorError(rule.error));

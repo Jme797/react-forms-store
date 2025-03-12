@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {MultipleChoiceField, OptionBase, useField} from 'react-forms-store';
+import {MultipleChoiceField, OptionBase} from 'react-forms-store';
 
 import {
     Checkbox,
@@ -9,6 +9,8 @@ import {
     FormGroup,
     FormHelperText,
 } from '@mui/material';
+
+import {useField} from '../utils';
 
 type CheckboxGroupProps<T extends OptionBase> = {
     field: MultipleChoiceField<T>;

@@ -20,6 +20,7 @@ export type FieldOptions<v> = {
 
 export type Option<v> = {value: v; label: string};
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class Field<v = any, F extends Form<any> = Form<any>> {
     protected _errors: ValidationResult = new ValidationResult({success: true});
     protected _value: v;

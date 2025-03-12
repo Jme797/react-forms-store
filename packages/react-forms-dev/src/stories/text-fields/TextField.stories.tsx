@@ -12,7 +12,6 @@ export default {
 const Template: StoryFn = args => {
     const textField = new TextField({
         label: 'Name',
-        initValue: '',
         required: true,
         helpText: 'Please enter your name.',
         validation: [

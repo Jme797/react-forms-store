@@ -1,10 +1,10 @@
-import useField from 'react-forms-store/src/utils/useField';
-
 import React from 'react';
 
 import {DateField} from 'react-forms-store';
 
 import {FormControl, FormHelperText, TextField} from '@mui/material';
+
+import {useField} from '../utils';
 
 type DateInputProps = {
     field: DateField;

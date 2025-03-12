@@ -1,6 +1,7 @@
 import {Field} from '../../fields/Field';
 import {ValidationResult} from '../../validation/Validator';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type DefaultFormState = Record<string, Field<any, Form<any>>>;
 
 export class Form<State extends DefaultFormState = DefaultFormState> {
@@ -21,7 +22,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      */
     registerFields = (fields: State) => {
         this.fields = fields;
-        Object.values(this.fields).forEach((field: Field<any, Form<any>>) => {
+        Object.values(this.fields).forEach((field: Field) => {
             field.form = this;
         });
     };
@@ -39,7 +40,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      */
     isDirty = (): boolean => {
         return !Object.values(this.fields).every(
-            (field: Field<any, Form<any>>) => !field.dirty
+            (field: Field) => !field.dirty
         );
     };
 
@@ -47,9 +48,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      * Saves the current state of all fields.
      */
     saveState = () => {
-        Object.values(this.fields).forEach((field: Field<any, Form<any>>) =>
-            field.saveValue()
-        );
+        Object.values(this.fields).forEach((field: Field) => field.saveValue());
     };
 
     /**
@@ -69,8 +68,8 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
     formValid = async (): Promise<boolean> => {
         const errors: ValidationResult[] = [];
         let valid = true;
-        const fs = Object.values(this.fields) as Field<any, Form<any>>[];
-        for await (const field of fs) {
+        const fs = Object.values(this.fields);
+        for (const field of fs) {
             const validationResult = await field.validate();
 
             errors.push(validationResult);
@@ -92,8 +91,9 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
         const data = {} as {[Key in keyof State]: State[Key]['value']};
         for (const [key, value] of Object.entries(this.fields)) {
             const k = key as keyof State;
-            const v: Field<any, Form<any>> = value;
+            const v: Field = value;
 
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             data[k] = v.value;
         }
 
@@ -104,9 +104,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
      * Resets all fields in the form to their initial values.
      */
     reset = () => {
-        Object.values(this.fields).forEach((field: Field<any, Form<any>>) =>
-            field.reset()
-        );
+        Object.values(this.fields).forEach((field: Field) => field.reset());
     };
 
     /**
@@ -150,7 +148,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
             const raisedErrors: ValidationResult[] = [];
             for (const [key, value] of Object.entries(this.fields)) {
                 const k = key as keyof State;
-                const v: Field<any, Form<any>> = value;
+                const v: Field = value;
 
                 const errors = fieldErrors[k];
                 /* istanbul ignore else */

@@ -13,7 +13,7 @@ describe('TextField', () => {
         expect(field.errors.errors).toBeUndefined();
     });
 
-    it('should initialize with default values', () => {
+    it('should initialize with init value', () => {
         const field = new TextField({
             label: 'Test Text',
             initValue: 'init',

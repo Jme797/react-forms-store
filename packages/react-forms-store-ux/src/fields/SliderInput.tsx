@@ -1,10 +1,10 @@
-import useField from 'react-forms-store/src/utils/useField';
-
 import React from 'react';
 
 import {NumberField} from 'react-forms-store';
 
 import {Slider, Typography} from '@mui/material';
+
+import {useField} from '../utils';
 
 type SliderInputProps = {
     field: NumberField;
