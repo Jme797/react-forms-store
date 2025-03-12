@@ -2,12 +2,11 @@ name: Publish to npm
 
 on:
     push:
-        branches:
-            - master
+        tags:
+            - '*'
 
 jobs:
     publish:
-        if: "!contains(github.event.head_commit.message, 'ci: bump version')"
         runs-on: ubuntu-latest
 
         steps:
@@ -26,25 +25,16 @@ jobs:
             - name: Run tests
               run: make test
 
-            - name: Authenticate with GitHub
-              uses: shimataro/ssh-key-action@v2
-              with:
-                  key: ${{ secrets.SSH_PRIVATE_KEY }}
-                  known_hosts: github.com
-
-            - name: Configure Git
+            - name: Set version from tag
               run: |
-                  git config --global user.name 'github-actions[bot]'
-                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-            - name: Increment version
-              run: |
-                  npm version patch -m "ci: bump version to %s"
-
-            - name: Push version bump
-              run: |
-                  git remote set-url origin git@github.com:Jme797/react-forms-store.git
-                  git push origin HEAD:main
+                  VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
+                  for package in packages/*; do
+                    if [ -d "$package" ]; then
+                      cd $package
+                      npm version $VERSION --no-git-tag-version
+                      cd ../..
+                    fi
+                  done
 
             - name: Publish to npm
               run: make publish
