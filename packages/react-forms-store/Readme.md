@@ -32,6 +32,43 @@ form.submit(async data => {
 });
 ````
 
+# Subscribing to field state in a Field component
+
+Here is a util hook that you can use to subscribe to state changes in the fields using react
+Not included to avoid the dependency on React in this package.
+
+```typescript
+# React <18
+import {useSyncExternalStore} from 'use-sync-external-store/shim';
+
+# React >= 18
+import {useSyncExternalStore} from 'react';
+
+import {Field} from 'react-forms-store';
+
+type UseFieldResult<T extends Field> = {
+    value: T['value'];
+    errors: string[];
+    hasErrors: boolean;
+};
+
+const useField = <T extends Field>(field: T): UseFieldResult<T> => {
+    const value = useSyncExternalStore(field.subscribe, () => field.value);
+    const errors = useSyncExternalStore(field.subscribe, () => field.errors);
+
+    const errorMessages = errors.errors?.map(error => error.msg) || [];
+
+    return {
+        value,
+        errors: errorMessages,
+        hasErrors: errorMessages.length > 0,
+    };
+};
+
+export default useField;
+
+```
+
 # React Form Example using `useField` and `useSyncExternalStore`
 
 This example demonstrates how to use a basic field in React with the `useField` hook and the `useSyncExternalStore` hook.
@@ -40,7 +77,7 @@ This example demonstrates how to use a basic field in React with the `useField` 
 
 ```typescript
 import React from 'react';
-import { useField } from 'react-forms-store';
+import { useField } from './your-utils';
 import { useSyncExternalStore } from 'react';
 
 const TextFieldComponent = ({ field }: { field: TextField }) => {
