@@ -159,6 +159,7 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
      * Resets the field to its saved value.
      */
     reset = (): void => {
+        this.dirty = false;
         this._value = this.savedValue;
         this.dismissErrors();
         this.triggerSubscribers();

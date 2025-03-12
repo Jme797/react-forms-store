@@ -1,5 +1,5 @@
-import {Field} from '../fields/Field';
-import {ValidationResult} from '../validation/Validator';
+import {Field} from '../../fields/Field';
+import {ValidationResult} from '../../validation/Validator';
 
 export type DefaultFormState = Record<string, Field<any, Form<any>>>;
 
@@ -135,13 +135,13 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
 
     /**
      * Raises errors for the form and its fields.
-     * @param {{fieldErrors?: {[Key in keyof State]: string[]}; formErrors?: string[]}} param0 - An object containing field and form errors.
+     * @param {{fieldErrors?: Partial<{[Key in keyof State]: string[]}>; formErrors?: string[]}} param0 - An object containing field and form errors.
      */
     raiseErrors = ({
         fieldErrors,
         formErrors = [],
     }: {
-        fieldErrors?: {[Key in keyof State]: string[]};
+        fieldErrors?: Partial<{[Key in keyof State]: string[]}>;
         formErrors?: string[];
     }) => {
         this.formErrors = formErrors;
@@ -155,7 +155,7 @@ export class Form<State extends DefaultFormState = DefaultFormState> {
                 const errors = fieldErrors[k];
                 /* istanbul ignore else */
                 if (errors) {
-                    raisedErrors.push(v.raiseErrors(fieldErrors[k]));
+                    raisedErrors.push(v.raiseErrors(errors));
                 }
             }
             this.errors = raisedErrors;

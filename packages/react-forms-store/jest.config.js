@@ -15,6 +15,12 @@ module.exports = {
             statements: 100,
         },
     },
+    collectCoverageFrom: [
+        '**/*.{js,jsx,tsx,ts}',
+        '!**/index.{js,jsx,tsx,ts}',
+        '!**/node_modules/**',
+        '!**/vendor/**',
+    ],
     coverageDirectory: '<rootDir>/coverage',
     coverageReporters: ['json', 'lcov', 'text', 'clover'],
     moduleNameMapper: {

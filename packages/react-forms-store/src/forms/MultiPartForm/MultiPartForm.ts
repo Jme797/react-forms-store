@@ -1,4 +1,4 @@
-import {DefaultFormState, Form} from './Form';
+import {DefaultFormState, Form} from '../Form';
 
 export type MultiPartFormState = Record<string, DefaultFormState>;
 
