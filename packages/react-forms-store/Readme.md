@@ -115,7 +115,11 @@ const FormComponent = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // ...existing code...
+
+        // Triggers form.isValid, does not get this far if it's not.
+        form.submit(async data => {
+            console.log(data);
+        })
     };
 
     return (
