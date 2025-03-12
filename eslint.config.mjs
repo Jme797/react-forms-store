@@ -1,15 +1,12 @@
 import js from '@eslint/js';
 import typescript from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
-import i18next from 'eslint-plugin-i18next';
 import jest from 'eslint-plugin-jest';
 import globals from 'globals';
 
 export default [
     {
-        ignores: [
-            '.yarn',
-        ]
+        ignores: ['.yarn'],
     },
     {
         files: ['**/*.ts', '**/*.tsx'],
@@ -82,16 +79,6 @@ export default [
         rules: {
             ...jest.configs.recommended.rules,
             // Add any custom rules here
-        },
-    },
-    {
-        ignores: ['packages/react-forms-dev/**'],
-        files: ['packages/**'],
-        plugins: {
-            i18next,
-        },
-        rules: {
-            ...i18next.configs['flat/recommended'].rules,
         },
     },
 ];

@@ -21,7 +21,6 @@
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "eslint": "^9.22.0",
-    "eslint-plugin-i18next": "^6.1.1",
     "eslint-plugin-jest": "^28.11.0",
     "inquirer": "^12.4.3",
     "merge-prettier-plugins": "^1.0.3",
