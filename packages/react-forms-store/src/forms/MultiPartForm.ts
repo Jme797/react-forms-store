@@ -79,10 +79,14 @@ export class MultiPartForm<
 
     /**
      * Submits the form if the current step is valid.
-     * @param {(data: State) => Promise<void>} handleSubmit - The function to handle form submission.
+     * @param {(data: {[Key in keyof State]: ReturnType<Form<State[Key]>['getData']>}) => Promise<void>} handleSubmit - The function to handle form submission.
      * @returns {Promise<void | false>} A promise that resolves when the form is submitted or false if the current step is invalid.
      */
-    submitStep = async (handleSubmit: (data: State) => Promise<void>) => {
+    submitStep = async (
+        handleSubmit: (data: {
+            [Key in keyof State]: ReturnType<Form<State[Key]>['getData']>;
+        }) => Promise<void>
+    ) => {
         const currentForm = this.getCurrentForm();
         currentForm.submitting = true;
         currentForm.triggerSubscribers();
@@ -100,14 +104,22 @@ export class MultiPartForm<
 
     /**
      * Retrieves the form data for all steps.
-     * @returns {State} The form data for all steps.
+     * @returns {[Key in keyof State]: ReturnType<Form<State[Key]>['getData']>} The form data for all steps.
      */
-    getData = (): State => {
-        const data: Partial<State> = {};
+    getData = (): {
+        [Key in keyof State]: ReturnType<Form<State[Key]>['getData']>;
+    } => {
+        const data: Partial<{
+            [Key in keyof State]: ReturnType<Form<State[Key]>['getData']>;
+        }> = {};
         for (const step of this.steps) {
-            data[step] = this.forms[step].getData() as State[keyof State];
+            data[step] = this.forms[step].getData() as ReturnType<
+                Form<State[typeof step]>['getData']
+            >;
         }
-        return data as State;
+        return data as {
+            [Key in keyof State]: ReturnType<Form<State[Key]>['getData']>;
+        };
     };
 
     /**
