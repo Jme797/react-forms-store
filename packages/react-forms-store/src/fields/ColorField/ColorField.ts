@@ -1,4 +1,4 @@
-import { Field, FieldOptions } from '../Field';
+import {Field, FieldOptions} from '../Field';
 
 export type ColorFormat = 'hex' | 'rgb' | 'rgba' | 'hsl' | 'hsla';
 
@@ -36,11 +36,15 @@ export class ColorField extends Field<string> {
             case 'rgb':
                 return /^rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)$/.test(value);
             case 'rgba':
-                return /^rgba\((\d{1,3}), (\d{1,3}), (\d{1,3}), (0|1|0?\.\d+)\)$/.test(value);
+                return /^rgba\((\d{1,3}), (\d{1,3}), (\d{1,3}), (0|1|0?\.\d+)\)$/.test(
+                    value
+                );
             case 'hsl':
                 return /^hsl\(\d{1,3}, \d{1,3}%, \d{1,3}%\)$/.test(value);
             case 'hsla':
-                return /^hsla\(\d{1,3}, \d{1,3}%, \d{1,3}%, (0|1|0?\.\d+)\)$/.test(value);
+                return /^hsla\(\d{1,3}, \d{1,3}%, \d{1,3}%, (0|1|0?\.\d+)\)$/.test(
+                    value
+                );
         }
     }
 }

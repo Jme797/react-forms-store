@@ -2,7 +2,7 @@
 // Run 'yarn i18n' to update this file.
 
 export type TranslationStrings = {
-  translation: {
-    'description': string;
-  };
-}
+    translation: {
+        description: string;
+    };
+};

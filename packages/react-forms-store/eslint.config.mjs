@@ -29,7 +29,7 @@ export default [
             ...js.configs.recommended.rules,
             ...typescript.configs.recommended.rules,
             ...typescript.configs['recommended-requiring-type-checking'].rules,
-            ...i18next.configs.recommended.rules,
+            ...i18next.configs['flat/recommended'].rules,
             ...jest.configs.recommended.rules,
         },
     },

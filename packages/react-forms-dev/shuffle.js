@@ -2,10 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Directory containing the files to update
-const targetDir = path.join(
-    process.cwd(),
-    'src/stories'
-);
+const targetDir = path.join(process.cwd(), 'src/stories');
 
 // Path to the StorybookNamespaces file
 const enumFilePath = path.join(

@@ -1,11 +1,12 @@
 import {Field} from '../fields/Field';
+
 import {Rules} from './types';
 
 export class ValidatorError {
     msg: string;
     // index?: number;
 
-    constructor(msg: string/* , index?: number */) {
+    constructor(msg: string /* , index?: number */) {
         this.msg = msg;
         // this.index = index;
     }

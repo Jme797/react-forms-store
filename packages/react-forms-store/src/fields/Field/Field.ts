@@ -1,10 +1,11 @@
+import {v4 as uuidv4} from 'uuid';
+
 import {Form} from '../../forms/Form';
 import {
     ValidationResult,
     Validator,
     ValidatorError,
 } from '../../validation/Validator';
-import {v4 as uuidv4} from 'uuid';
 
 export type FieldOptions<v> = {
     label: string;
@@ -200,7 +201,7 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
     subscribe = (callback: () => void): (() => void) => {
         this.subscribers.add(callback);
         return () => {
-            this.subscribers.delete(callback)
+            this.subscribers.delete(callback);
         };
     };
 }

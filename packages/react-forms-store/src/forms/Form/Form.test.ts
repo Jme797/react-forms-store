@@ -127,7 +127,7 @@ describe('Form', () => {
         const unsubscribe = form.subscribe(subscriber);
 
         unsubscribe();
-        form.triggerSubscribers()
+        form.triggerSubscribers();
         expect(subscriber).not.toHaveBeenCalled();
     });
 });

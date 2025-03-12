@@ -14,8 +14,8 @@ describe('MultipleFileField', () => {
     });
 
     it('should initialize with provided initial value', () => {
-        const file1 = new File(['content1'], 'test1.txt', { type: 'text/plain' });
-        const file2 = new File(['content2'], 'test2.txt', { type: 'text/plain' });
+        const file1 = new File(['content1'], 'test1.txt', {type: 'text/plain'});
+        const file2 = new File(['content2'], 'test2.txt', {type: 'text/plain'});
 
         const field = new MultipleFileField({
             label: 'Test Multi File',
