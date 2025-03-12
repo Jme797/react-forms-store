@@ -2,11 +2,6 @@
 node_modules/
 packages/*/node_modules/
 
-# Yarn
-.yarn/
-.pnp.*
-.yarnrc.yml
-
 # Logs
 logs
 *.log
