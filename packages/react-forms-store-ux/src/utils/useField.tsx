@@ -1,5 +1,6 @@
-import {Field} from '../fields/Field';
 import {useSyncExternalStore} from 'use-sync-external-store/shim';
+
+import {Field} from 'react-forms-store';
 
 type UseFieldResult<T extends Field> = {
     value: T['value'];
