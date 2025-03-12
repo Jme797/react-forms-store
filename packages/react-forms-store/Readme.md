@@ -1,3 +1,15 @@
+# React Forms Store
+
+The Form store is an excellent choice for React state management because it isolates field state updates to the level of each individual field, rather than triggering re-renders on the Form component itself. This approach ensures that the performance of the application remains optimal, as only the components that need to update will do so. Additionally, it maintains the accessibility of all form data within the Form component, providing a centralized and efficient way to manage and validate form inputs without unnecessary re-renders.
+
+## Installation
+
+To install the React Forms Store package, use the following command:
+
+```bash
+npm install react-forms-store
+```
+
 # Basic example (Form)
 
 This example demonstrates how to create a basic form using the `Form` class.
@@ -18,7 +30,7 @@ form.setValue('age', 30);
 form.submit(async data => {
     console.log('Form submitted successfully:', data);
 });
-```
+````
 
 # React Form Example using `useField` and `useSyncExternalStore`
 
@@ -83,25 +95,25 @@ const FormComponent = () => {
 This example demonstrates how to create a multi-part form using the `MultiPartForm` class interface.
 
 ```typescript
-import { FileField, Form, MultiPartForm, TextField } from 'react-forms-store';
+import {FileField, Form, MultiPartForm, TextField} from 'react-forms-store';
 
 const personalInfoForm = new Form({
     fields: {
-        firstName: new TextField({ label: 'First Name', required: true }),
-        lastName: new TextField({ label: 'Last Name', required: true }),
+        firstName: new TextField({label: 'First Name', required: true}),
+        lastName: new TextField({label: 'Last Name', required: true}),
     },
 });
 
 const contactInfoForm = new Form({
     fields: {
-        email: new TextField({ label: 'Email', required: true }),
-        phone: new TextField({ label: 'Phone', required: true }),
+        email: new TextField({label: 'Email', required: true}),
+        phone: new TextField({label: 'Phone', required: true}),
     },
 });
 
 const documentForm = new Form({
     fields: {
-        resume: new FileField({ label: 'Resume', required: true }),
+        resume: new FileField({label: 'Resume', required: true}),
     },
 });
 
@@ -119,7 +131,7 @@ contactInfoForm.setValue('email', 'john.doe@example.com');
 contactInfoForm.setValue('phone', '1234567890');
 documentForm.setValue(
     'resume',
-    new File(['content'], 'resume.pdf', { type: 'application/pdf' })
+    new File(['content'], 'resume.pdf', {type: 'application/pdf'})
 );
 
 multiPartForm.submit(async data => {
@@ -132,11 +144,11 @@ multiPartForm.submit(async data => {
 The `Field` class is the base class for all form fields. It provides common functionality such as setting and getting values, validation, and managing errors.
 
 ```typescript
-import { Field } from 'react-forms-store';
+import {Field} from 'react-forms-store';
 
 class CustomField extends Field<string> {
     constructor() {
-        super({ label: 'Custom Field', required: true });
+        super({label: 'Custom Field', required: true});
     }
 
     validate() {
@@ -158,9 +170,9 @@ console.log(customField.value); // Output: Custom Value
 The `TextField` class is used to create text input fields.
 
 ```typescript
-import { TextField } from 'react-forms-store';
+import {TextField} from 'react-forms-store';
 
-const textField = new TextField({ label: 'Text Field', required: true });
+const textField = new TextField({label: 'Text Field', required: true});
 textField.setValue('Sample Text');
 console.log(textField.value); // Output: Sample Text
 ```
@@ -170,7 +182,7 @@ console.log(textField.value); // Output: Sample Text
 The `NumberField` class is used to create number input fields.
 
 ```typescript
-import { NumberField } from 'react-forms-store';
+import {NumberField} from 'react-forms-store';
 
 const numberField = new NumberField({
     label: 'Number Field',
@@ -187,14 +199,14 @@ console.log(numberField.value); // Output: 50
 The `ChoiceField` class is used to create single-choice input fields.
 
 ```typescript
-import { ChoiceField } from 'react-forms-store';
+import {ChoiceField} from 'react-forms-store';
 
 const choiceField = new ChoiceField({
     label: 'Choice Field',
     required: true,
     options: [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' },
+        {value: 'option1', label: 'Option 1'},
+        {value: 'option2', label: 'Option 2'},
     ],
 });
 choiceField.setValue('option1');
@@ -206,14 +218,14 @@ console.log(choiceField.value); // Output: option1
 The `MultiChoiceField` class is used to create multi-choice input fields.
 
 ```typescript
-import { MultiChoiceField } from 'react-forms-store';
+import {MultiChoiceField} from 'react-forms-store';
 
 const multiChoiceField = new MultiChoiceField({
     label: 'Multi Choice Field',
     required: true,
     options: [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' },
+        {value: 'option1', label: 'Option 1'},
+        {value: 'option2', label: 'Option 2'},
     ],
 });
 multiChoiceField.addValueByValue('option1');
@@ -228,9 +240,9 @@ console.log(multiChoiceField.value); // Output: [{ value: 'option1', label: 'Opt
 The `DateField` class is used to create date input fields.
 
 ```typescript
-import { DateField } from 'react-forms-store';
+import {DateField} from 'react-forms-store';
 
-const dateField = new DateField({ label: 'Date Field', required: true });
+const dateField = new DateField({label: 'Date Field', required: true});
 dateField.setValue(new Date('2025-03-12'));
 console.log(dateField.value); // Output: 2025-03-12T00:00:00.000Z
 ```
@@ -240,10 +252,10 @@ console.log(dateField.value); // Output: 2025-03-12T00:00:00.000Z
 The `FileField` class is used to create file input fields.
 
 ```typescript
-import { FileField } from 'react-forms-store';
+import {FileField} from 'react-forms-store';
 
-const fileField = new FileField({ label: 'File Field', required: true });
-const file = new File(['content'], 'file.txt', { type: 'text/plain' });
+const fileField = new FileField({label: 'File Field', required: true});
+const file = new File(['content'], 'file.txt', {type: 'text/plain'});
 fileField.setValue(file);
 console.log(fileField.value); // Output: File object
 ```
@@ -253,14 +265,14 @@ console.log(fileField.value); // Output: File object
 The `MultiFileField` class is used to create multiple file input fields.
 
 ```typescript
-import { MultiFileField } from 'react-forms-store';
+import {MultiFileField} from 'react-forms-store';
 
 const multiFileField = new MultiFileField({
     label: 'Multi File Field',
     required: true,
 });
-const file1 = new File(['content1'], 'file1.txt', { type: 'text/plain' });
-const file2 = new File(['content2'], 'file2.txt', { type: 'text/plain' });
+const file1 = new File(['content1'], 'file1.txt', {type: 'text/plain'});
+const file2 = new File(['content2'], 'file2.txt', {type: 'text/plain'});
 multiFileField.setValue([file1, file2]);
 console.log(multiFileField.value); // Output: [File object, File object]
 ```
@@ -270,7 +282,7 @@ console.log(multiFileField.value); // Output: [File object, File object]
 The `ColorField` class is used to create color input fields.
 
 ```typescript
-import { ColorField } from 'react-forms-store';
+import {ColorField} from 'react-forms-store';
 
 const colorField = new ColorField({
     label: 'Color Field',
@@ -286,7 +298,7 @@ console.log(colorField.value); // Output: #ff0000
 Validation definitions are used to specify custom validation rules for form fields. Each validation `rule` consists of a `rule` function and an `error` message.
 
 ```typescript
-import { TextField } from 'react-forms-store';
+import {TextField} from 'react-forms-store';
 
 const textField = new TextField({
     label: 'Text Field',
