@@ -187,14 +187,6 @@ class CustomField extends Field<string> {
     constructor() {
         super({label: 'Custom Field', required: true});
     }
-
-    validate() {
-        if (!this.value) {
-            this.setError('This field is required');
-        } else {
-            this.clearError();
-        }
-    }
 }
 
 const customField = new CustomField();
