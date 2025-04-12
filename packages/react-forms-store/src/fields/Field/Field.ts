@@ -1,5 +1,3 @@
-import {v4 as uuidv4} from 'uuid';
-
 import {Form} from '../../forms/Form';
 import {
     ValidationResult,
@@ -20,6 +18,10 @@ export type FieldOptions<v> = {
 };
 
 export type Option<v> = {value: v; label: string};
+
+// Add a static counter for generating unique IDs
+let idCounter = 0;
+const generateUniqueId = () => `id${++idCounter}`;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class Field<v = any, F extends Form<any> = Form<any>> {
@@ -57,7 +59,7 @@ export class Field<v = any, F extends Form<any> = Form<any>> {
     }: Omit<FieldOptions<v>, 'initValue'> & {initValue: v}) {
         this._value = initValue;
         this.label = label;
-        this.name = 'id' + uuidv4();
+        this.name = generateUniqueId(); // Use the custom ID generator
         this.validator.rules = validation;
         this.required = required;
         this.savedValue = initValue;
