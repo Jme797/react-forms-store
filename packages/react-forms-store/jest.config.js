@@ -21,6 +21,7 @@ module.exports = {
         '!**/index.{js,jsx,tsx,ts}',
         '!**/node_modules/**',
         '!**/vendor/**',
+        '!**/src/i18n',
     ],
     coverageDirectory: '<rootDir>/coverage',
     coverageReporters: ['json', 'lcov', 'text', 'clover'],
