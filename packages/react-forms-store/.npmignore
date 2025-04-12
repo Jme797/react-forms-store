@@ -2,7 +2,7 @@
 *
 
 # Allow the dist folder
-!dist/
+!dist/**
 
 # Allow package.json
 !package.json
