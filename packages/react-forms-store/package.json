@@ -2,7 +2,7 @@
     "name": "react-forms-store",
     "version": "0.0.2",
     "description": "A package for building React forms using external storages",
-    "main": "src/index.ts",
+    "main": "dist/index.js",
     "scripts": {
         "build": "node scripts/build.js",
         "test": "jest",
