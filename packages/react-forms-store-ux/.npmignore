@@ -1,0 +1,11 @@
+# Include only the dist folder, package.json, and README.md
+*
+
+# Allow the dist folder
+!dist/**
+
+# Allow package.json
+!package.json
+
+# Allow README.md
+!README.md

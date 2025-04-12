@@ -2,11 +2,14 @@
     "name": "react-forms-store-ux",
     "version": "0.0.2",
     "description": "A UX package for React forms",
-    "main": "src/index.tsx",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
-        "build": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js",
-        "test": "jest"
+        "test": "jest",
+        "build": "rm -rf dist && tsc",
+        "i18n": "i18next && node scripts/gen-i18n-configuration.mjs",
+        "prepack": "yarn build"
     },
     "repository": {
         "type": "git",

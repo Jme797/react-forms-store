@@ -9,6 +9,7 @@ test:
 publish:
 	@echo "Publishing package 'react-forms-store'"
 	@yarn workspace react-forms-store npm publish
+	@yarn workspace react-forms-store-ux npm publish
 
 release:
 	@yarn node scripts/create-release.mjs
