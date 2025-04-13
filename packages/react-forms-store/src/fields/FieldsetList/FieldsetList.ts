@@ -44,7 +44,7 @@ export class FieldsetList<TFields extends Record<string, Field>> extends Field<
     /**
      * Adds a new fieldset to the list using the fieldset factory.
      */
-    add(): void {
+    add = (): void => {
         const newFieldset = new Fieldset(this.fieldsetFactory());
         newFieldset.subscribe(() => this.updateValue());
         this.items.push(newFieldset);
