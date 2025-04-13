@@ -49,7 +49,7 @@ export class FieldsetList<TFields extends Record<string, Field>> extends Field<
         newFieldset.subscribe(() => this.updateValue());
         this.items.push(newFieldset);
         this.updateValue();
-    }
+    };
 
     /**
      * Removes a fieldset from the list by index.
@@ -84,5 +84,38 @@ export class FieldsetList<TFields extends Record<string, Field>> extends Field<
     resetToDefault = (): void => {
         this.items.forEach(fieldset => fieldset.resetToDefault());
         this.updateValue();
+    };
+
+    /**
+     * Sets the value of the FieldsetList and propagates updates to each fieldset.
+     * @param {FieldsetListValue<TFields>} value - The new value for the FieldsetList.
+     */
+    setValue = (
+        value:
+            | FieldsetListValue<TFields>
+            | ((curr: FieldsetListValue<TFields>) => FieldsetListValue<TFields>)
+    ): void => {
+        const newValue = value instanceof Function ? value(this.value) : value;
+
+        // Ensure the number of fieldsets matches the new value
+        while (this.items.length < newValue.length) {
+            this.add(); // Add new fieldsets if needed
+        }
+        while (this.items.length > newValue.length) {
+            this.remove(this.items.length - 1); // Remove extra fieldsets if needed
+        }
+
+        // Propagate the new values to each fieldset
+        newValue.forEach((itemValue, index) => {
+            if (this.items[index]) {
+                this.items[index].setValue(itemValue); // Call setValue on each fieldset
+            }
+        });
+
+        // Update the FieldsetList's internal value
+        this._value = newValue;
+
+        // Notify subscribers of the change
+        this.triggerSubscribers();
     };
 }
