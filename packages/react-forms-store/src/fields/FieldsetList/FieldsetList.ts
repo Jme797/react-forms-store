@@ -9,21 +9,16 @@ export class FieldsetList<TFields extends Record<string, Field>> extends Field<
     FieldsetListValue<TFields>
 > {
     readonly items: Array<Fieldset<TFields>>;
-    private readonly fieldsetFactory: () => TFields;
+    private readonly fieldsetFactory: (
+        initialValues?: FieldsetValue<TFields>
+    ) => TFields;
 
     constructor(
-        fieldsetFactory: () => TFields,
+        fieldsetFactory: (initialValues?: FieldsetValue<TFields>) => TFields,
         initialValues: Array<FieldsetValue<TFields>> = []
     ) {
         const fieldsets = initialValues.map(value => {
-            const fields = fieldsetFactory();
-            Object.keys(fields).forEach(key => {
-                if (fields[key]) {
-                    fields[key].setValue(
-                        value[key as keyof FieldsetValue<TFields>]
-                    );
-                }
-            });
+            const fields = fieldsetFactory(value); // Pass initial values to the factory
             return new Fieldset(fields);
         });
 
@@ -43,13 +38,14 @@ export class FieldsetList<TFields extends Record<string, Field>> extends Field<
 
     /**
      * Adds a new fieldset to the list using the fieldset factory.
+     * @param {FieldsetValue<TFields>} [initialValues] - Optional initial values for the new fieldset.
      */
-    add = (): void => {
-        const newFieldset = new Fieldset(this.fieldsetFactory());
+    add = (initialValues?: FieldsetValue<TFields>): void => {
+        const newFieldset = new Fieldset(this.fieldsetFactory(initialValues));
         newFieldset.subscribe(() => this.updateValue());
         this.items.push(newFieldset);
         this.updateValue();
-    }
+    };
 
     /**
      * Removes a fieldset from the list by index.
