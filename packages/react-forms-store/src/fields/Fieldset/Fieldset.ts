@@ -47,6 +47,7 @@ export class Fieldset<TFields extends Record<string, Field>> extends Field<
     private updateValue(): void {
         const newValue = Fieldset.computeInitialValue(this.fields);
         this._value = newValue;
+        this.triggerSubscribers();
     }
 
     /**
