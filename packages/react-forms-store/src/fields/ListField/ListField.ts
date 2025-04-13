@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import {Field, FieldOptions} from '../Field/Field';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

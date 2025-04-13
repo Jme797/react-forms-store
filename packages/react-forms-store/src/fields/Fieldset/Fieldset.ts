@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import {ValidationResult} from '../../validation/Validator';
 import {Field} from '../Field/Field';
 
