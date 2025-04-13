@@ -13,13 +13,25 @@ export class FieldsetList<TFields extends Record<string, Field>> extends Field<
 
     constructor(
         fieldsetFactory: () => TFields,
-        initialItems: Array<TFields> = []
+        initialValues: Array<FieldsetValue<TFields>> = []
     ) {
-        const fieldsets = initialItems.map(fields => new Fieldset(fields));
+        const fieldsets = initialValues.map(value => {
+            const fields = fieldsetFactory();
+            Object.keys(fields).forEach(key => {
+                if (fields[key]) {
+                    fields[key].setValue(
+                        value[key as keyof FieldsetValue<TFields>]
+                    );
+                }
+            });
+            return new Fieldset(fields);
+        });
+
         super({
             initValue: fieldsets.map(fieldset => fieldset.value),
             label: 'Fieldset List',
         });
+
         this.items = fieldsets;
         this.fieldsetFactory = fieldsetFactory;
 
