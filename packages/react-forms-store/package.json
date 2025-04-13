@@ -1,41 +1,47 @@
 {
-    "name": "react-forms-store",
-    "version": "0.0.2",
-    "description": "A package for building React forms using external storages",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "build": "rm -rf dist && tsc",
-        "test": "jest",
-        "i18n": "i18next && node scripts/gen-i18n-configuration.mjs",
-        "prepack": "yarn build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Jme797/react-forms-store.git"
-    },
-    "keywords": [
-        "react",
-        "forms",
-        "external storage",
-        "hooks"
-    ],
-    "author": "Jme797",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Jme797/react-forms-store/issues"
-    },
-    "homepage": "https://github.com/Jme797/react-forms-store#readme",
-    "dependencies": {
-        "i18next": "^24.2.2"
-    },
-    "devDependencies": {
-        "@types/jest": "^29.5.14",
-        "esbuild": "^0.14.0",
-        "i18next-parser": "^9.3.0",
-        "jest": "^29.0.0",
-        "ts-jest": "^29.2.6",
-        "typescript": "^5.0.0"
-    },
-    "packageManager": "yarn@4.5.1"
+  "name": "react-forms-store",
+  "version": "0.0.2",
+  "description": "A package for building React forms using external storages",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "test": "jest",
+    "i18n": "i18next && node scripts/gen-i18n-configuration.mjs",
+    "prepack": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jme797/react-forms-store.git"
+  },
+  "keywords": [
+    "react",
+    "forms",
+    "external storage",
+    "hooks"
+  ],
+  "author": "Jme797",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jme797/react-forms-store/issues"
+  },
+  "homepage": "https://github.com/Jme797/react-forms-store#readme",
+  "dependencies": {
+    "i18next": "^24.2.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "esbuild": "^0.14.0",
+    "i18next-parser": "^9.3.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.2.6",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "yarn@4.5.1"
 }

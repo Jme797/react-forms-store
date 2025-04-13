@@ -1,64 +1,70 @@
 {
-    "name": "react-forms-store-ux",
-    "version": "0.0.2",
-    "description": "A UX package for React forms",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
-        "test": "jest",
-        "build": "rm -rf dist && tsc",
-        "i18n": "i18next && node scripts/gen-i18n-configuration.mjs",
-        "prepack": "yarn build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Jme797/react-forms-store-ux.git"
-    },
-    "keywords": [
-        "react",
-        "forms",
-        "ux",
-        "material-ui"
-    ],
-    "author": "Jme797",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Jme797/react-forms-store-ux/issues"
-    },
-    "homepage": "https://github.com/Jme797/react-forms-store-ux#readme",
-    "dependencies": {
-        "@mui/icons-material": "^6.4.3",
-        "@mui/system": "^6.4.7",
-        "@types/luxon": "^3.4.2",
-        "@types/use-sync-external-store": "^0.0.4",
-        "luxon": "^3.5.0",
-        "react-color": "^2.19.3",
-        "react-forms-store": "workspace:*",
-        "use-sync-external-store": "^1.4.0"
-    },
-    "peerDependencies": {
-        "@emotion/react": "^11.0.0",
-        "@emotion/styled": "^11.0.0",
-        "@mui/lab": "^6.0.0-beta.27",
-        "@mui/material": "^6.1.7",
-        "@mui/x-date-pickers": "7.27.0",
-        "react": "^17.0.0",
-        "react-dom": "^17.0.0"
-    },
-    "devDependencies": {
-        "@emotion/react": "^11.0.0",
-        "@emotion/styled": "^11.0.0",
-        "@mui/material": "^6.1.7",
-        "@mui/x-date-pickers": "7.27.0",
-        "@types/react": "^17.0.0",
-        "@types/react-color": "^3.0.13",
-        "@types/react-dom": "^17.0.0",
-        "esbuild": "^0.14.0",
-        "jest": "^27.0.0",
-        "react": "^17.0.0",
-        "react-dom": "^17.0.0",
-        "typescript": "^5.0.0"
-    },
-    "packageManager": "yarn@4.5.1"
+  "name": "react-forms-store-ux",
+  "version": "0.0.2",
+  "description": "A UX package for React forms",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.tsx",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
+    "test": "jest",
+    "build": "rm -rf dist && tsc",
+    "i18n": "i18next && node scripts/gen-i18n-configuration.mjs",
+    "prepack": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jme797/react-forms-store.git"
+  },
+  "keywords": [
+    "react",
+    "forms",
+    "ux",
+    "material-ui"
+  ],
+  "author": "Jme797",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jme797/react-forms-store-ux/issues"
+  },
+  "homepage": "https://github.com/Jme797/react-forms-store-ux#readme",
+  "dependencies": {
+    "@mui/icons-material": "^6.4.3",
+    "@mui/system": "^6.4.7",
+    "@types/luxon": "^3.4.2",
+    "@types/use-sync-external-store": "^0.0.4",
+    "luxon": "^3.5.0",
+    "react-color": "^2.19.3",
+    "react-forms-store": "workspace:*",
+    "use-sync-external-store": "^1.4.0"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "@mui/lab": "^6.0.0-beta.27",
+    "@mui/material": "^6.1.7",
+    "@mui/x-date-pickers": "7.27.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "@mui/material": "^6.1.7",
+    "@mui/x-date-pickers": "7.27.0",
+    "@types/react": "^17.0.0",
+    "@types/react-color": "^3.0.13",
+    "@types/react-dom": "^17.0.0",
+    "esbuild": "^0.14.0",
+    "jest": "^27.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "yarn@4.5.1"
 }
