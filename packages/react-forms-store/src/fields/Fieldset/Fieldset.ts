@@ -67,28 +67,39 @@ export class Fieldset<TFields extends Record<string, Field>> extends Field<
     };
 
     /**
-     * Overrides the setValue method to propagate the value to child fields.
-     * @param {FieldsetValue<TFields> | ((curr: FieldsetValue<TFields>) => FieldsetValue<TFields>)} value - The new value for the fieldset or a function to compute it.
+     * Resets all child fields to their saved values and updates the fieldset value.
      */
-    setValue = (
-        value:
-            | FieldsetValue<TFields>
-            | ((curr: FieldsetValue<TFields>) => FieldsetValue<TFields>)
-    ): void => {
-        const newValue = value instanceof Function ? value(this.value) : value;
+    reset = (): void => {
+        // Reset each child field
+        Object.values(this.fields).forEach(field => field.reset());
 
-        // Set the value for each child field
-        for (const key in newValue) {
-            if (this.fields[key]) {
-                this.fields[key].setValue(newValue[key]);
-            }
-        }
+        // Update the fieldset's value based on the child fields
+        this._value = Fieldset.computeInitialValue(this.fields);
 
-        // Update the fieldset's internal value
-        this._value = newValue;
+        // Mark the fieldset as not dirty
+        this.dirty = false;
 
-        // Mark the fieldset as dirty
-        this.dirty = true;
+        // Dismiss any existing errors
+        this.dismissErrors();
+
+        // Notify subscribers of the change
+        this.triggerSubscribers();
+    };
+
+    /**
+     * Resets all child fields to their default values and updates the fieldset value.
+     */
+    resetToDefault = (): void => {
+        // Reset each child field to its default value
+        Object.values(this.fields).forEach(field =>
+            field.resetToDefaultValue()
+        );
+
+        // Update the fieldset's value based on the child fields
+        this._value = Fieldset.computeInitialValue(this.fields);
+
+        // Mark the fieldset as not dirty
+        this.dirty = false;
 
         // Dismiss any existing errors
         this.dismissErrors();
