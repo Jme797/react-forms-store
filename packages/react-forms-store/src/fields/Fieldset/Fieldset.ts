@@ -65,4 +65,35 @@ export class Fieldset<TFields extends Record<string, Field>> extends Field<
 
         return new ValidationResult(result);
     };
+
+    /**
+     * Overrides the setValue method to propagate the value to child fields.
+     * @param {FieldsetValue<TFields> | ((curr: FieldsetValue<TFields>) => FieldsetValue<TFields>)} value - The new value for the fieldset or a function to compute it.
+     */
+    setValue = (
+        value:
+            | FieldsetValue<TFields>
+            | ((curr: FieldsetValue<TFields>) => FieldsetValue<TFields>)
+    ): void => {
+        const newValue = value instanceof Function ? value(this.value) : value;
+
+        // Set the value for each child field
+        for (const key in newValue) {
+            if (this.fields[key]) {
+                this.fields[key].setValue(newValue[key]);
+            }
+        }
+
+        // Update the fieldset's internal value
+        this._value = newValue;
+
+        // Mark the fieldset as dirty
+        this.dirty = true;
+
+        // Dismiss any existing errors
+        this.dismissErrors();
+
+        // Notify subscribers of the change
+        this.triggerSubscribers();
+    };
 }
