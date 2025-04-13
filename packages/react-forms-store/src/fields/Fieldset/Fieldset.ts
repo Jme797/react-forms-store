@@ -107,4 +107,48 @@ export class Fieldset<TFields extends Record<string, Field>> extends Field<
         // Notify subscribers of the change
         this.triggerSubscribers();
     };
+
+    /**
+     * Sets the value of the fieldset and updates child fields only if their values have changed.
+     * @param {FieldsetValue<TFields>} value - The new value for the fieldset.
+     */
+    setValue = (
+        value:
+            | FieldsetValue<TFields>
+            | ((curr: FieldsetValue<TFields>) => FieldsetValue<TFields>)
+    ): void => {
+        const newValue = value instanceof Function ? value(this.value) : value;
+
+        // Update each child field only if its value has changed
+        Object.keys(newValue).forEach(key => {
+            const field = this.fields[key];
+            if (field) {
+                const newFieldValue = newValue[key];
+                if (
+                    typeof newFieldValue === 'object' &&
+                    newFieldValue !== null
+                ) {
+                    // Perform a deep comparison for objects and arrays
+                    if (
+                        JSON.stringify(field.value) !==
+                        JSON.stringify(newFieldValue)
+                    ) {
+                        field.setValue(newFieldValue);
+                    }
+                } else if (field.value !== newFieldValue) {
+                    // Update primitive values directly
+                    field.setValue(newFieldValue);
+                }
+            }
+        });
+
+        // Update the fieldset's internal value
+        this._value = Fieldset.computeInitialValue(this.fields);
+
+        // Mark the fieldset as dirty
+        this.dirty = true;
+
+        // Notify subscribers of the change
+        this.triggerSubscribers();
+    };
 }
