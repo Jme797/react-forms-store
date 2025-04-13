@@ -46,7 +46,7 @@ export class Fieldset<TFields extends Record<string, Field>> extends Field<
      */
     private updateValue(): void {
         const newValue = Fieldset.computeInitialValue(this.fields);
-        this.setValue(newValue);
+        this._value = newValue;
     }
 
     /**
@@ -122,24 +122,8 @@ export class Fieldset<TFields extends Record<string, Field>> extends Field<
         // Update each child field only if its value has changed
         Object.keys(newValue).forEach(key => {
             const field = this.fields[key];
-            if (field) {
-                const newFieldValue = newValue[key];
-                if (
-                    typeof newFieldValue === 'object' &&
-                    newFieldValue !== null
-                ) {
-                    // Perform a deep comparison for objects and arrays
-                    if (
-                        JSON.stringify(field.value) !==
-                        JSON.stringify(newFieldValue)
-                    ) {
-                        field.setValue(newFieldValue);
-                    }
-                } else if (field.value !== newFieldValue) {
-                    // Update primitive values directly
-                    field.setValue(newFieldValue);
-                }
-            }
+            const newFieldValue = newValue[key];
+            field.setValue(newFieldValue);
         });
 
         // Update the fieldset's internal value

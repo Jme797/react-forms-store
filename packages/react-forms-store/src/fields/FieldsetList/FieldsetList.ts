@@ -67,7 +67,8 @@ export class FieldsetList<TFields extends Record<string, Field>> extends Field<
      */
     private updateValue(): void {
         const newValue = this.items.map(fieldset => fieldset.value);
-        this.setValue(newValue);
+        this._value = newValue;
+        this.triggerSubscribers();
     }
 
     /**
