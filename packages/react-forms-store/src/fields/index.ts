@@ -8,4 +8,5 @@ export * from './FileField';
 export * from './MultiFileField';
 export * from './ColorField';
 export * from './Fieldset';
+export * from './FieldsetList';
 export * from './ListField';

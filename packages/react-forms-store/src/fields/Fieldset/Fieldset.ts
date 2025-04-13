@@ -3,7 +3,7 @@
 import {ValidationResult} from '../../validation/Validator';
 import {Field} from '../Field/Field';
 
-type FieldsetValue<TFields> = {
+export type FieldsetValue<TFields> = {
     [K in keyof TFields]: TFields[K] extends Field<infer V> ? V : never;
 };
 
