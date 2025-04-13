@@ -4,12 +4,6 @@
   "description": "A UX package for React forms",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./src/index.tsx",
-      "require": "./dist/index.js"
-    }
-  },
   "scripts": {
     "start": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --serve",
     "test": "jest",
